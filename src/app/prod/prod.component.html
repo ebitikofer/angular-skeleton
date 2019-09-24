@@ -1,0 +1,23 @@
+<div style="text-align: center">
+
+  <h3>Child Component</h3>
+  <label>Value:</label>
+  <input type="text" #childText (keyup)='onChange(childText.value)' /><br>
+  <label>Parent's Name: {{parentName}}</label><br>
+  <label>Parent's Value: {{parentData}}</label><br><br><br>
+
+  <div>
+    <span *ngIf="isAvailable;then condition1 else condition2">Condition is valid!</span>
+    <ng-template #condition1>Condition is valid from template!</ng-template>
+    <ng-template #condition2>Condition is invalid from template!</ng-template><br>
+    <button (click)="changeAvailability()">Switch</button>
+  </div><br>
+
+  <h3>2-Way Binding:</h3>
+  Name: <input type='text' [(ngModel)]='name' /><br>
+  <div>Name is: {{name}}</div><br><br>
+
+  <button [disabled]="buttonStatus" (click)="buttonClick()">Butt</button><br>
+  <button (click)="buttonDisable()">Button</button><br><br>
+
+</div>
