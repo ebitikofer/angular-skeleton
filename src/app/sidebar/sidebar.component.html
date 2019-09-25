@@ -1,0 +1,14 @@
+<div style="float: left; width: auto; background-color: #88064b; padding: 10px;">
+
+  <app-user-status (userStatusEvent)='catchUserStatusEvent($event)'></app-user-status>
+
+  <h5 style="margin: 0px;">{{currentDate | date:'d/M/y'}}</h5>
+  <h5 style="margin: 0px;">{{currentDate | date:'shortTime'}}</h5>
+
+  <app-employee></app-employee>
+
+  <app-theme-switch></app-theme-switch>
+
+  <app-notes></app-notes>
+
+</div>

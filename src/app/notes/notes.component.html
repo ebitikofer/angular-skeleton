@@ -1,0 +1,14 @@
+<div>
+
+  <h5>ToDo:</h5>
+  <select name="notes" (change)="updateCurrentTask($event.target.value)">
+    <option *ngFor="let i of todo">{{i}}</option>
+  </select>
+
+  <h5>Available:</h5>
+  <div *ngFor="let i of todo">
+    <h5 *ngIf="i == currentTask" style="color: azure; margin: 0px;">{{i}}</h5>
+    <h5 *ngIf="i != currentTask" style="color: #5E2636; margin: 0px;">{{i}}</h5>
+  </div>
+
+</div><br>

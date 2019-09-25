@@ -1,7 +1,11 @@
 <div style="text-align: center">
 
-  <h3>User Component</h3>
+  <h3>
+    <div *ngIf="isAdmin">Admin</div>
+    <div *ngIf="!isAdmin">User</div> Component
+  </h3>
   <label>Value:</label>
-  <input type="text" #userStatusText (keyup)='onChange(userStatusText.value)' /><br><br>
+  <input type="text" #userStatusText (keyup)='onChange(userStatusText.value)' /><br>
+  <button (click)="elevatePrivileges()">{{action}}</button><br><br>
 
 </div>

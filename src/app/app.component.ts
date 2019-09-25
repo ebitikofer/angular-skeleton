@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { DateTimeService } from './date-time.service';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  constructor () {
+  constructor (private service: DateTimeService) {
     console.log(AppComponent.sval);
     console.log(this.num_val);
     this.storeNum();
@@ -18,8 +19,15 @@ export class AppComponent {
   static sval = 10;
   num_val = 13;
 
+  currentDate = new Date();
+
   childData: string;
   userStatus: string;
+
+  ngOnInit() {
+    // this.currentDate = this.service.currentDate;
+    console.log(this.currentDate);
+  }
 
   storeNum(): void {
     let local_num = 14;

@@ -11,11 +11,20 @@ export class UserStatusComponent implements OnInit {
 
   constructor () { }
 
+  isAdmin = true;
+  action = 'demote';
+
   ngOnInit() {
   }
 
   onChange(value: string) {
     this.userStatusEvent.emit(value);
+  }
+
+  elevatePrivileges() {
+    this.isAdmin = !this.isAdmin;
+    if (this.isAdmin) { this.action = 'demote'; }
+    else { this.action = 'elevate' }
   }
 
 }
