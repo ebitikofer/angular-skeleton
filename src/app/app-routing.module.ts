@@ -5,6 +5,10 @@ import { EmployeeComponent } from './employee/employee.component';
 import { ThemeSwitchComponent } from './theme-switch/theme-switch.component';
 import { NotesComponent } from './notes/notes.component';
 import { E404Component } from './e404/e404.component';
+import { SignupComponent } from './signup/signup.component';
+import { ProductAddComponent } from './product-add/product-add.component';
+
+import { OrderSaveGuard } from './order/order-save.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: 'component1/3/4', pathMatch: 'full' },
@@ -12,11 +16,15 @@ const routes: Routes = [
   { path: 'component2', component: NotesComponent },
   { path: 'component3', component: ThemeSwitchComponent },
   { path: 'component4', component: EmployeeComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'addproduct', component: ProductAddComponent },
+  // { path: 'products', }
   { path: '**', component: E404Component }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [OrderSaveGuard]
 })
 export class AppRoutingModule { }

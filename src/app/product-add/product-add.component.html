@@ -1,0 +1,30 @@
+<div>
+
+  <form class="form-horizontal" #addProductForm="ngForm">
+    <fieldset>
+      <legend>Add Product</legend>
+
+      <div class="form-group">
+        <label for="inputName">Name</label>
+        <input type="text" required [(ngModel)]="product.name" id="inputName" name="name" placeholder="Name">
+      </div>
+
+      <div class="form-group">
+        <label for="inputBarcode">Barcode</label>
+        <input type="number" required [(ngModel)]="product.barcode" id="inputBarcode" name="barcode">
+      </div>
+
+      <div class="form-group">
+        <label for="inputPrice">Price</label>
+        <input type="number" required [(ngModel)]="product.price" id="inputPrice" name="price">
+      </div>
+
+      <div class="form-group">
+        <button type="reset">Cancel</button>
+        <button type="submit" [disabled]="!ngForm.valid">Submit</button>
+      </div>
+
+    </fieldset>
+  </form>
+
+</div>

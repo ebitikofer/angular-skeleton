@@ -1,14 +1,29 @@
-<div style="float: left; width: auto; background-color: #88064b; padding: 10px;">
+<div style="float: left; width: 150px; height: 100vh; padding: 10px; text-align: center;">
+
+  <!-- <h5 style="margin: 16px;"> -->
+  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #f4cbc7; color: #5E2636;"
+    routerLink="products">Products</button><br>
+  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #f4cbc7; color: #5E2636;"
+    routerLink="order">Order</button><br>
+  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #f4cbc7; color: #5E2636;"
+    routerLink="addproduct">Add Product</button><br>
+  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #e6097e; color: #5E2636;"
+    routerLink="signup">Signup</button><br>
+  <!-- </h5> -->
+
+  <br>
+  <hr>
+  <br>
+
+  <app-notes></app-notes>
+
+  <br>
+  <hr>
+  <br>
 
   <app-user-status (userStatusEvent)='catchUserStatusEvent($event)'></app-user-status>
 
   <h5 style="margin: 0px;">{{currentDate | date:'d/M/y'}}</h5>
   <h5 style="margin: 0px;">{{currentDate | date:'shortTime'}}</h5>
-
-  <app-employee></app-employee>
-
-  <app-theme-switch></app-theme-switch>
-
-  <app-notes></app-notes>
 
 </div>

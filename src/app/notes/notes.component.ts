@@ -11,7 +11,7 @@ export class NotesComponent implements OnInit {
 
   todo = ['clean room', 'wash car', 'practice drums', 'code', 'workout'];
 
-  currentTask;
+  currentTask = this.todo[0];
 
   ngOnInit() {
   }
