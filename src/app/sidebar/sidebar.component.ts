@@ -12,6 +12,29 @@ export class SidebarComponent implements OnInit {
   currentDate = new Date();
   userStatus: string;
 
+  routes = [
+    {
+      link: 'products',
+      name: 'Products'
+    },
+    {
+      link: 'order',
+      name: 'Order'
+    },
+    {
+      link: 'addproduct',
+      name: 'Add Product'
+    },
+    {
+      link: 'signup',
+      name: 'Signup'
+    },
+    {
+      link: 'login',
+      name: 'Login'
+    }
+  ];
+
   ngOnInit() {
   }
 

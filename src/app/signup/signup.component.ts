@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-signup',
@@ -10,15 +11,19 @@ export class SignupComponent implements OnInit {
 
   constructor () { }
 
-  private user: User;
-  private gender: string[];
+  ngForm: NgForm;
+
+  // private user: User;
+  user: User;
+  // private gender: string[];
+  gender: string[];
 
   ngOnInit() {
 
     this.gender = ['Male', 'Female', 'Others'];
 
     this.user = new User({
-      email: '', password: { pwd: '', conformPwd: '' }, gender: this.gender[0], terms: false
+      email: '', password: { pwd: '', confirmPwd: '' }, gender: this.gender[0], terms: false
     });
 
   }

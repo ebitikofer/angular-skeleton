@@ -28,10 +28,12 @@ export class LoginComponent implements OnInit {
   login() {
     this.isSubmitted = true;
     if (this.loginForm.invalid) {
+      console.log('Invalid');
       return;
     }
+    console.log('Valid');
     this.authService.login(this.loginForm.value);
-    this.router.navigateByUrl('/admin');
+    this.router.navigateByUrl('admin');
   }
 
 }

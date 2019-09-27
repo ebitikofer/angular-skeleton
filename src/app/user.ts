@@ -4,7 +4,7 @@ export class User {
     email: string;
     password: {
         pwd: string;
-        confrimPwd: string;
+        confirmPwd: string;
     };
     gender: string;
     terms: boolean;

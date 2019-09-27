@@ -1,3 +1,28 @@
-div {
+.sidebar-div {
   background-color: #64253d;
+  float: left;
+  width: 150px;
+  height: 100vh;
+  padding: 10px;
+  text-align: center;
+}
+
+.route-button {
+  width: 150px;
+  border: 1px;
+  border-color: #ad055f;
+  background-color: #f4cbc7;
+  color: #5E2636;
+}
+
+.route-button-active {
+  width: 150px;
+  border: 1px;
+  border-color: #ad055f;
+  background-color: #e6097e;
+  color: #5E2636;
+}
+
+.close-text {
+  margin: 0px;
 }

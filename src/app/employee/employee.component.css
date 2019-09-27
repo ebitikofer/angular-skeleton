@@ -1,0 +1,13 @@
+.example-viewport {
+  height: 250px;
+  width: 25%;
+  border: 1px solid azure;
+}
+
+.list {
+  height: 80px;
+}
+
+.container {
+  justify-content: center
+}

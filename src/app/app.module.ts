@@ -2,6 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 // Feature Modules
 import { ProductModule } from './product/product.module';
@@ -60,7 +63,10 @@ import { StringReversalPipe } from './string-reversal.pipe';
     ProductModule,
     OrderModule,
     LoginModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    DragDropModule,
+    ScrollingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

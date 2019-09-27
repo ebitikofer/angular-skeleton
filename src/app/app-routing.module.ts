@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'component4', component: EmployeeComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'addproduct', component: ProductAddComponent },
+  // { path: 'admin', component: AdminComponent },
   // { path: 'products', }
   { path: '**', component: E404Component }
 ];

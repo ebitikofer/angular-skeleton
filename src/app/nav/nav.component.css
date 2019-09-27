@@ -1,3 +1,22 @@
-div {
+.nav-div {
   background-color: rgb(85, 30, 51);
+  padding: 10px;
+  text-align: center;
+}
+
+.logo-img {
+  max-height: 100px;
+  max-width: 100px;
+  display: inline-block;
+  float: left;
+  margin-left: 27.5px;
+}
+
+.title-text {
+  display: inline-block;
+  margin: 0px;
+}
+
+.router-link-text {
+  margin: 16px;
 }

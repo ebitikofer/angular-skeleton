@@ -1,29 +1,28 @@
-<div style="float: left; width: 150px; height: 100vh; padding: 10px; text-align: center;">
+<div class='sidebar-div'>
 
   <!-- <h5 style="margin: 16px;"> -->
-  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #f4cbc7; color: #5E2636;"
-    routerLink="products">Products</button><br>
-  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #f4cbc7; color: #5E2636;"
-    routerLink="order">Order</button><br>
-  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #f4cbc7; color: #5E2636;"
-    routerLink="addproduct">Add Product</button><br>
-  <button style="width: 150px; border: 1px; border-color: #ad055f; background-color: #e6097e; color: #5E2636;"
-    routerLink="signup">Signup</button><br>
+
+  <button class='route-button' *ngFor="let route of routes" routerLink="{{route.link}}">{{route.name}}</button><br>
+
+  <!-- <button class='route-button' routerLink="products">Products</button><br>
+  <button class='route-button' routerLink="order">Order</button><br>
+  <button class='route-button' routerLink="addproduct">Add Product</button><br>
+  <button class='route-button-active' routerLink="signup">Signup</button><br>
+  <button class='route-button-active' routerLink="login">Login</button><br> -->
+
   <!-- </h5> -->
 
   <br>
-  <hr>
-  <br>
+  <hr><br>
 
   <app-notes></app-notes>
 
   <br>
-  <hr>
-  <br>
+  <hr><br>
 
   <app-user-status (userStatusEvent)='catchUserStatusEvent($event)'></app-user-status>
 
-  <h5 style="margin: 0px;">{{currentDate | date:'d/M/y'}}</h5>
-  <h5 style="margin: 0px;">{{currentDate | date:'shortTime'}}</h5>
+  <h5 class="close-text">{{currentDate | date:'d/M/y'}}</h5>
+  <h5 class="close-text">{{currentDate | date:'shortTime'}}</h5>
 
 </div>

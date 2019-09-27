@@ -9,9 +9,12 @@ import { NgForm } from '@angular/forms';
 })
 export class ProductAddComponent implements OnInit {
 
-  constructor () { }
+  constructor (/* private ngForm: NgForm */) { }
 
-  private product: Product;
+  ngForm: NgForm;
+
+  // private product: Product;
+  product: Product;
 
   ngOnInit() {
 

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeService } from '../employee.service';
 
 @Component({
   selector: 'app-employee',
@@ -15,9 +16,59 @@ export class EmployeeComponent implements OnInit {
   info = { height: '5f10i', age: '25', address: { a1: 'Columbus', a2: 'Cleveland' } };
   months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-  constructor () { }
+  newEmployee = {
+    id: '60606',
+    employee_name: 'Eric Bitikofer',
+    employee_salary: '100001',
+    employee_age: '25',
+    profile_image: ''
+  };
+
+  newEmployeeUpdate = {
+    id: '60606',
+    employee_name: 'Eric Bitikofer',
+    employee_salary: '1000000',
+    employee_age: '25',
+    profile_image: ''
+  };
+
+  employees = ['Eric', 'Dan', 'Steven', 'Rhys', 'Anthony', 'Chris', 'Chelsea', 'Bailee'];
+
+  constructor (private employee: EmployeeService) { }
 
   ngOnInit() {
+  }
+
+  createEmployee() {
+
+    this.employee.postEmployee(this.newEmployee);
+
+  }
+
+  readEmployee(id?: number) {
+
+    if (id !== undefined) {
+      this.employee.getEmployeeByID(id);
+    } else {
+      this.employee.getEmployees();
+    }
+
+  }
+
+  updateEmployee(id: number) {
+
+    this.employee.putEmployee(id, this.newEmployeeUpdate);
+
+  }
+
+  deleteEmployee(id: number) {
+
+    this.employee.deleteEmployee(id);
+
+  }
+
+  newRandomEmployee() {
+
   }
 
 }

@@ -1,5 +1,5 @@
-<div style="text-align: center">
-  <h5 style="margin: 0px;">{{fname | uppercase}}</h5>
+<div style="text-align: center;">
+  <h5 style=" margin: 0px;">{{fname | uppercase}}</h5>
   <h5 style="margin: 0px;">{{lname | lowercase}}</h5>
   <h5 style="margin: 0px;">{{fname | stringReversal | uppercase}}</h5>
   <h5 style="margin: 0px;">{{lname | stringReversal | lowercase}}</h5>
@@ -10,4 +10,25 @@
   <h6 style="margin: 0px;">{{00.54565 | percent}}</h6>
   <h6 style="margin: 0px;">{{months | slice:2:6}}</h6>
   <h6 style="margin: 0px;">45.6 floor -> {{45.6 | floor}}</h6>
+
+  <button (click)="readEmployee()">Get</button>
+  <button (click)="readEmployee(60606)">Get</button>
+  <button (click)="createEmployee()">Post</button>
+  <button (click)="updateEmployee(60606)">Put</button>
+  <button (click)="deleteEmployee(60606)">Delete</button>
+
+  <div style="margin: 0 auto;">
+    <div style="width: 100px; margin: 0 auto;" *ngFor='let employee of employees' class='pop' cdkDrag>{{employee}}</div>
+  </div>
+
+  <div class="container">
+    <h2>E</h2>
+    <cdk-virtual-scroll-viewport itemSize='100' class="example-viewport" style="margin: 0 auto;">
+      <div style=" text-align: center;" *cdkVirtualFor="let employee of employees" class="list" cdkDrag>
+        <h2>{{employee}}</h2>
+      </div>
+    </cdk-virtual-scroll-viewport>
+
+  </div>
+
 </div>
