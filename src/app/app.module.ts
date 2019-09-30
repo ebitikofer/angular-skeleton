@@ -28,6 +28,7 @@ import { ContentComponent } from './content/content.component';
 import { E404Component } from './e404/e404.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { HomeComponent } from './home/home.component';
 
 // Directives
 import { ChangeTextDirective } from './change-text.directive';
@@ -56,7 +57,8 @@ import { StringReversalPipe } from './string-reversal.pipe';
     ContentComponent,
     E404Component,
     SignupComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
