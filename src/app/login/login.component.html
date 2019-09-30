@@ -1,6 +1,6 @@
 <div>
 
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" (ngSubmit)="login()" [@hideForm]="loggedIn ? true : false" [@shrinkForm]="formHidden ? true : false">
 
     <div [ngClass]="{ 'has-error' : isSubmitted && formControls.email.errors }">
       <input type="email" placeholder="Email" formControlName="email" (blur)="emailCheck()">

@@ -20,12 +20,24 @@ import { AuthService } from '../auth.service';
       state('false', style({ backgroundColor: '#940000' })),
       transition('false <=> true', animate('.125s'))
     ]),
+    trigger('hideForm', [
+      state('true', style({ opacity: '0' })),
+      state('false', style({ opacity: '1' })),
+      transition('false <=> true', animate('.125s')),
+    ]),
+    trigger('shrinkForm', [
+      state('true', style({ height: '0px' })),
+      state('false', style({ height: '*' })),
+      transition('false <=> true', animate('.25s')),
+    ])
   ]
 })
 export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
   isSubmitted = false;
+  loggedIn = false;
+  formHidden = false;
   
   emailEntered = false;
   passwordEntered = false;
@@ -51,6 +63,12 @@ export class LoginComponent implements OnInit {
     console.log('Valid');
     this.authService.login(this.loginForm.value);
     this.router.navigateByUrl('admin');
+    setTimeout(() => {
+      this.loggedIn = true;
+      setTimeout(() => {
+        this.formHidden = true;
+      }, 500);
+    }, 500);
   }
 
   emailCheck() {
@@ -58,7 +76,7 @@ export class LoginComponent implements OnInit {
       this.passwordEntered = false;
       setTimeout(() => {
         this.emailEntered = false;
-      }, 500);
+      }, 2000);
     } else {
       this.emailEntered = true;
     }
