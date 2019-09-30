@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 // Feature Modules
 import { ProductModule } from './product/product.module';
@@ -66,7 +68,8 @@ import { StringReversalPipe } from './string-reversal.pipe';
     AppRoutingModule,
     HttpClientModule,
     DragDropModule,
-    ScrollingModule
+    ScrollingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
