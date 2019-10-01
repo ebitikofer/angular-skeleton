@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-notes',
@@ -18,6 +19,10 @@ export class NotesComponent implements OnInit {
 
   updateCurrentTask(incomingTask) {
     this.currentTask = incomingTask;
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.movies, event.previousIndex, event.currentIndex);
   }
 
 }
