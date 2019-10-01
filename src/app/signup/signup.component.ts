@@ -30,7 +30,7 @@ import { AuthService } from '../auth.service';
     trigger('shrinkForm', [
       state('true', style({ height: '0px' })),
       state('false', style({ height: '*' })),
-      transition('false <=> true', animate('.25s')),
+      transition('false <=> true', animate('500ms cubic-bezier(.66,-0.49,1,-0.17)')),
     ])
   ]
 })
