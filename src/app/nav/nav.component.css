@@ -9,12 +9,12 @@
   max-width: 100px;
   display: inline-block;
   float: left;
-  margin-left: 27.5px;
+  margin: 27.5px;
 }
 
 .title-text {
   display: inline-block;
-  margin: 0px;
+  margin: 27.5px 0px;
 }
 
 .router-link-text {

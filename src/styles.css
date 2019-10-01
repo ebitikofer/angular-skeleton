@@ -20,7 +20,7 @@ body {
 }
 
 input {
-  max-width: 45px;
+  /* max-width: 45px; */
   border: none;
   /* background-color: antiquewhite; */
   background-color: antiquewhite;

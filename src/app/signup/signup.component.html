@@ -1,6 +1,35 @@
 <div>
 
-  <form class="form-horizontal" #signupForm="ngForm">
+    <form [formGroup]="loginForm" (ngSubmit)="login()" [@hideForm]="loggedIn ? true : false" [@shrinkForm]="formHidden ? true : false">
+
+        <div [ngClass]="{ 'has-error' : isSubmitted && formControls.email.errors }">
+          <input type="email" placeholder="Email" formControlName="email" (blur)="emailCheck()">
+        </div>
+    
+        <div [ngClass]="{ 'has-error' : isSubmitted && formControls.password.errors }">
+          <input type="password" placeholder="Password" formControlName="password" (blur)="passwordCheck()">
+        </div>
+
+        <div [ngClass]="{ 'has-error' : isSubmitted && formControls.confirm.errors }">
+            <input type="confirm" placeholder="Confirm" formControlName="confirm" (blur)="confirmCheck()">
+          </div>
+    
+        <div>
+          <input type="submit" value="Log in" (click)=loginSumission()>
+        </div>
+    
+        <div class="short-rectangle" [@lineFill]="emailEntered ? true : false"></div>
+        <span class="dot" [@dotFill]="emailEntered ? true : false"></span>
+        <div class="short-rectangle"[@lineFill]="passwordEntered ? true : false"></div>
+        <span class="dot" [@dotFill]="passwordEntered ? true : false"></span>
+        <div class="short-rectangle"[@lineFill]="confirmEntered ? true : false"></div>
+        <span class="dot" [@dotFill]="confirmEntered ? true : false"></span>
+        <div class="short-rectangle" [@lineFill]="formSubmitted ? true : false"></div>
+        <span class="dot" [@dotFill]="formSubmitted ? true : false"></span>
+    
+    </form>
+
+  <!-- <form class="form-horizontal" #signupForm="ngForm">
     <fieldset>
       <legend>Signup</legend>
 
@@ -47,6 +76,6 @@
       </div>
 
     </fieldset>
-  </form>
+  </form> -->
 
 </div>

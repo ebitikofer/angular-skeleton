@@ -7,11 +7,13 @@ import { NotesComponent } from './notes/notes.component';
 import { E404Component } from './e404/e404.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { HomeComponent } from './home/home.component';
 
 import { OrderSaveGuard } from './order/order-save.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'component1/3/4', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'component1/:multiplier/:multiplicand', component: WidgetsComponent },
   { path: 'component2', component: NotesComponent },
   { path: 'component3', component: ThemeSwitchComponent },

@@ -1,23 +1,26 @@
 <div>
-  <form [formGroup]="loginForm" (ngSubmit)="login()">
-    <p [ngClass]="{ 'has-error' : isSubmitted && formControls.email.errors }">
-      <input type="email" placeholder="Email" formControlName="email">
-    </p>
-    <div *ngIf="isSubmitted && formControls.email.errors" class="help-block">
-      <div *ngIf="formControls.email.errors.required">
-        Email required
-      </div>
+
+  <form [formGroup]="loginForm" (ngSubmit)="login()" [@hideForm]="loggedIn ? true : false" [@shrinkForm]="formHidden ? true : false">
+
+    <div [ngClass]="{ 'has-error' : isSubmitted && formControls.email.errors }">
+      <input type="email" placeholder="Email" formControlName="email" (blur)="emailCheck()">
     </div>
-    <p [ngClass]="{ 'has-error' : isSubmitted && formControls.password.errors }">
-      <input type="password" placeholder="Password" formControlName="password">
-    </p>
-    <div *ngIf="isSubmitted && formControls.password.errors" class="help-block">
-      <div *ngIf="formControls.password.errors.required">
-        Password required
-      </div>
+
+    <div [ngClass]="{ 'has-error' : isSubmitted && formControls.password.errors }">
+      <input type="password" placeholder="Password" formControlName="password" (blur)="passwordCheck()">
     </div>
-    <p>
-      <input type="submit" value="Log in">
-    </p>
+
+    <div>
+      <input type="submit" value="Log in" (click)=loginSumission()>
+    </div>
+
+    <div class="rectangle" [@lineFill]="emailEntered ? true : false"></div>
+    <span class="dot" [@dotFill]="emailEntered ? true : false"></span>
+    <div class="short-rectangle"[@lineFill]="passwordEntered ? true : false"></div>
+    <span class="dot" [@dotFill]="passwordEntered ? true : false"></span>
+    <div class="short-rectangle" [@lineFill]="formSubmitted ? true : false"></div>
+    <span class="dot" [@dotFill]="formSubmitted ? true : false"></span>
+
   </form>
+
 </div>

@@ -1,0 +1,38 @@
+input {
+    width: 150px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 10px;
+    border: 1px;
+    border-color: #ad055f;
+    background-color: #f4cbc7;
+    color: #5E2636;
+}
+
+.dot {
+    height: 9px;
+    width: 9px;
+    background-color: #000000;
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+.rectangle {
+    height: 1px;
+    width: 55px;
+    margin: 4px 4px;
+    background-color: #000000;
+    display: inline-block;
+  }
+
+.short-rectangle {
+    height: 1px;
+    width: 20px;
+    margin: 4px 4px;
+    background-color: #000000;
+    display: inline-block;
+  }
+
+.help-block {
+    font-size:  10px;
+    display: inline-block;
+}

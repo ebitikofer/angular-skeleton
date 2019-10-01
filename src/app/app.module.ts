@@ -5,6 +5,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 // Feature Modules
 import { ProductModule } from './product/product.module';
@@ -26,6 +28,7 @@ import { ContentComponent } from './content/content.component';
 import { E404Component } from './e404/e404.component';
 import { SignupComponent } from './signup/signup.component';
 import { ProductAddComponent } from './product-add/product-add.component';
+import { HomeComponent } from './home/home.component';
 
 // Directives
 import { ChangeTextDirective } from './change-text.directive';
@@ -54,7 +57,8 @@ import { StringReversalPipe } from './string-reversal.pipe';
     ContentComponent,
     E404Component,
     SignupComponent,
-    ProductAddComponent
+    ProductAddComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +70,8 @@ import { StringReversalPipe } from './string-reversal.pipe';
     AppRoutingModule,
     HttpClientModule,
     DragDropModule,
-    ScrollingModule
+    ScrollingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
