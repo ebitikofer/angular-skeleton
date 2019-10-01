@@ -12,6 +12,8 @@ export class NotesComponent implements OnInit {
 
   todo = ['clean room', 'wash car', 'practice drums', 'code', 'workout'];
 
+  doing = ['empty'];
+
   done = [
     'Get to work',
     'Pick up groceries',
@@ -42,6 +44,24 @@ export class NotesComponent implements OnInit {
                         event.previousIndex,
                         event.currentIndex);
     }
+  }
+
+  dropInDoing(event: CdkDragDrop<string[]>) {
+    console.log(event.item.element.nativeElement.innerText);
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+                        event.container.data,
+                        event.previousIndex,
+                        event.currentIndex);
+    }
+    this.doing.forEach((item, index) => {
+      if(item != event.item.element.nativeElement.innerText) {
+        this.done.unshift(item);
+        this.doing.splice(index);
+      }
+    });
   }
 
 }
