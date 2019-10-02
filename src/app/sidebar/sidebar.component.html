@@ -14,15 +14,15 @@
 
   <hr>
 
-  <div [@sectionHeight]="loginHeight ? true : false">
+  <div [@sectionHeight]="loginHeight ? true : false" [@sectionVisibility]="loginState ? true : false">
     <app-login [@sectionVisibility]="loginState ? true : false"></app-login>
   </div>
 
-  <div [@sectionHeight]="signupHeight ? true : false">
+  <div [@sectionHeight]="signupHeight ? true : false" [@sectionVisibility]="signupState ? true : false">
     <app-signup [@sectionVisibility]="signupState ? true : false"></app-signup>
   </div>
   
-  <div [@sectionHeight]="profileHeight ? true : false">
+  <div [@sectionHeight]="profileHeight ? true : false" [@sectionVisibility]="profileState ? true : false">
     <app-employee [@sectionVisibility]="profileState ? true : false"></app-employee>
   </div>
 
