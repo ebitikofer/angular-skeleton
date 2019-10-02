@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { CommonModule } from '@angular/common';  
 
 // Feature Modules
 import { ProductModule } from './product/product.module';
@@ -71,7 +71,8 @@ import { StringReversalPipe } from './string-reversal.pipe';
     HttpClientModule,
     DragDropModule,
     ScrollingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
