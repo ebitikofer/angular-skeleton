@@ -12,7 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { OrderSaveGuard } from './order/order-save.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'component1/:multiplier/:multiplicand', component: WidgetsComponent },
   { path: 'component2', component: NotesComponent },
