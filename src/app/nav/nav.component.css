@@ -20,3 +20,15 @@
 .router-link-text {
   margin: 16px;
 }
+
+@media (max-width: 600px) {
+  
+  .title-text {
+    font-size: 15px;
+  }
+
+  .router-link-text {
+    margin: 16px;
+  }
+  
+}
