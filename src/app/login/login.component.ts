@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../auth.service';
+import { FirebaseAuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -23,16 +24,18 @@ import { AuthService } from '../auth.service';
     trigger('hideForm', [
       state('true', style({ opacity: '0' })),
       state('false', style({ opacity: '1' })),
-      transition('false <=> true', animate('.125s')),
+      transition('false <=> true', animate('.06125s')),
     ]),
     trigger('shrinkForm', [
       state('true', style({ height: '0px' })),
       state('false', style({ height: '*' })),
-      transition('false <=> true', animate('.25s')),
+      transition('false <=> true', animate('.06125s')),
     ])
   ]
 })
 export class LoginComponent implements OnInit {
+
+  @Output() childEvent = new EventEmitter<string>();
 
   loginForm: FormGroup;
   isSubmitted = false;
@@ -43,7 +46,7 @@ export class LoginComponent implements OnInit {
   passwordEntered = false;
   formSubmitted = false;
 
-  constructor (private authService: AuthService, private router: Router, private formBuilder: FormBuilder) { }
+  constructor (private authService: AuthService, private auth: FirebaseAuthService, private router: Router, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -69,6 +72,30 @@ export class LoginComponent implements OnInit {
         this.formHidden = true;
       }, 500);
     }, 500);
+  }
+
+  signInAnonymously() {
+    this.auth.anonymousLogin()
+    this.router.navigateByUrl('');
+    this.emailEntered = true;
+    setTimeout(() => {
+      this.passwordEntered = true;
+      setTimeout(() => {
+        this.formSubmitted = true;
+        setTimeout(() => {
+          this.childEvent.emit('authed');
+          // setTimeout(() => {
+          //   this.formHidden = true;
+          // }, 1500);
+        }, 1500);
+      }, 500);
+    }, 500);
+    this.childEvent.emit('authed');
+  }
+
+  private afterSignIn(): void {
+    // Do after login stuff here, such router redirects, toast messages, etc.
+    this.router.navigate(['/notes']);
   }
 
   emailCheck() {

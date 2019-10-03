@@ -1,0 +1,77 @@
+# image: node:11
+
+# before_script:
+#   - mkdir ~/.ssh/
+#   - touch ~/.ssh/known_hosts
+#   - echo "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+#   - chmod 644 ~/.ssh/known_hosts
+#   - echo "$SSH_PRIVATE_KEY" | base64 -d
+#   - eval $(ssh-agent -s)
+#   - ssh-add <(echo "$SSH_PRIVATE_KEY" | base64 -d)
+
+# cache:
+#   key: new-key
+#   paths:
+#     - node_modules/
+
+# stages:
+#   - build
+#   - test
+#   - deploy
+
+# test:
+#   stage: test
+#   script:
+#     - echo "Running tests"
+#     - pwd
+
+# build:
+#   stage: build
+#   script:
+#     - echo "Building the app"
+#     - npm rebuild node-sass
+#     - npm prune && npm install && npm install --only=dev
+
+# deploy_develop:
+#   stage: deploy
+#   script:
+#     - echo "Deploy to development server"
+#     - ./node_modules/.bin/ionic cordova build browser --prod --release
+#     - rsync -av --delete platforms/browser/ root@192.168.10.44:/var/www/html
+#   environment:
+#     name: develop
+#     url: http://192.168.10.44
+#   only:
+#     - develop
+
+# deploy_staging:
+#   stage: deploy
+#   script:
+#     - echo "Deploy to staging server"
+#     - 'which rsync || (apt-get update -y && apt-get -y install rsync)'
+#     - ./node_modules/.bin/ionic cordova build browser --prod --release --extra-webpack-config webpack.extra.js
+#     - ssh-keyscan salata.stage.dineengine.com >> ~/.ssh/known_hosts
+#     - chmod 644 ~/.ssh/known_hosts
+#     - rsync -av --delete platforms/browser/ root@144.217.249.82:/var/www/html
+#   environment:
+#     name: staging
+#     url: https://salata.stage.dineengine.com
+#   only:
+#     - staging
+
+# deploy_prod:
+#   stage: deploy
+#   script:
+#     - echo "Deploy to production server"
+#     - 'which rsync || (apt-get update -y && apt-get -y install rsync)'
+#     - ./node_modules/.bin/ionic cordova build browser --prod --release --extra-webpack-config webpack.extra.js
+#     - ssh-keyscan salata.prod01.dineengine.com >> ~/.ssh/known_hosts
+#     - chmod 644 ~/.ssh/known_hosts
+#     - rsync -av --delete platforms/browser/ root@144.217.249.83:/var/www/html
+
+#   environment:
+#     name: production
+#     url: https://salata.prod01.chepri.com
+#   when: manual
+#   only:
+#     - master

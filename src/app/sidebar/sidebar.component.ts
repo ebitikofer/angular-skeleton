@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -9,18 +10,18 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
     trigger('sectionVisibility', [
       state('false', style({ opacity: '0' })),
       state('true', style({ opacity: '1' })),
-      transition('true <=> false', animate('.125s')),
+      transition('true <=> false', animate('.06125s')),
     ]),
     trigger('sectionHeight', [
       state('false', style({ height: '0px' })),
       state('true', style({ height: '*' })),
-      transition('true <=> false', animate('.25s')),
+      transition('true <=> false', animate('.06125s')),
     ])
   ]
 })
 export class SidebarComponent implements OnInit {
 
-  constructor () { }
+  constructor (private router: Router) { }
 
   currentDate = new Date();
   userStatus: string;
@@ -32,6 +33,9 @@ export class SidebarComponent implements OnInit {
   loginHeight = false;
   signupHeight = false;
   profileHeight = false;
+
+  authData: string;
+  loggedIn = false;
 
   routes = [
     {
@@ -70,7 +74,6 @@ export class SidebarComponent implements OnInit {
 
   openLogin() {
     console.log("Open login component");
-    
     setTimeout(() => {
       this.signupState = false;
       this.profileState = false;
@@ -111,21 +114,34 @@ export class SidebarComponent implements OnInit {
   openProfile() {
     console.log("Open profile component");
 
-    setTimeout(() => {
-      this.loginState = false;
-      this.signupState = false;
-      setTimeout(() => {
-        this.loginHeight = false;
-        this.signupHeight = false;
+    setTimeout(() => {  
+     setTimeout(() => {
+        this.loginState = false;
+        this.signupState = false;
         setTimeout(() => {
-          this.profileHeight = true;
+          this.loginHeight = false;
+          this.signupHeight = false;
           setTimeout(() => {
-            this.profileState = true;
+            this.profileHeight = true;
+            setTimeout(() => {
+              this.profileState = true;
+            }, 500);
           }, 500);
         }, 500);
       }, 500);
-    }, 500);
+    }, 3000);
 
+  }
+
+  catchChildEvent($event) {
+    this.authData = $event;
+    if(this.authData == 'authed') {
+      this.openProfile();
+    }
+    setTimeout(() => {
+      this.loggedIn = true;
+      this.router.navigateByUrl('/notes');
+    }, 5000);
   }
 
   nothing(){

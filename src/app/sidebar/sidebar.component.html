@@ -6,16 +6,15 @@
   <!-- <button class='route-button' routerLink="products">Products</button><br>
   <button class='route-button' routerLink="order">Order</button><br>
   <button class='route-button' routerLink="addproduct">Add Product</button><br> -->
-  <button class='route-button-active' routerLink="" (click)="openLogin()">Login</button><br>
-  <button class='route-button-active' routerLink="" (click)="openSignup()">Signup</button><br>
-  <button class='route-button-active' routerLink="" (click)="openProfile()">Profile</button><br>
+  <button class='route-button-active' *ngIf="!loggedIn" (click)="openLogin()">Login</button><br>
+  <button class='route-button-active' (click)="openSignup()" disabled>Signup</button><br>
 
   <!-- </h5> -->
 
   <hr>
 
   <div [@sectionHeight]="loginHeight ? true : false" [@sectionVisibility]="loginState ? true : false">
-    <app-login [@sectionVisibility]="loginState ? true : false"></app-login>
+    <app-login [@sectionVisibility]="loginState ? true : false" (childEvent)='catchChildEvent($event)'></app-login>
   </div>
 
   <div [@sectionHeight]="signupHeight ? true : false" [@sectionVisibility]="signupState ? true : false">
