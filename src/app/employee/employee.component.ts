@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/Observable';
+
 import { EmployeeService } from '../employee.service';
+
+export interface Item { text: any; }
 
 @Component({
   selector: 'app-employee',
@@ -7,6 +12,12 @@ import { EmployeeService } from '../employee.service';
   styleUrls: ['./employee.component.css']
 })
 export class EmployeeComponent implements OnInit {
+  
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  private itemsDocument: AngularFirestoreDocument<Item>;
+  private dbFS: AngularFirestore;
+  public profileItems: Observable<any[]>;
+  public chatItems: Observable<any[]>;
 
   fname = 'Eric';
   lname = 'Bitikofer';
@@ -34,9 +45,21 @@ export class EmployeeComponent implements OnInit {
 
   employees = ['Eric', 'Dan', 'Steven', 'Rhys', 'Anthony', 'Chris', 'Chelsea', 'Bailee'];
 
-  constructor (private employee: EmployeeService) { }
+  constructor (private employee: EmployeeService, db: AngularFirestore) {
+    this.profileItems = db.collection('/profiles').valueChanges();
+    this.chatItems = db.collection('/chats').valueChanges();
+    this.itemsCollection = db.collection<Item>('chats');
+    this.itemsDocument = db.doc<Item>('chats/0000000000000000');
+  }
 
   ngOnInit() {
+
+  }
+
+  submitChat(event) {
+    this.itemsCollection.add({text: event.target.value});
+    // this.itemsDocument.update({chats: FieldValue.arrayUnion("greater_virginia")})
+    event.target.value = '';
   }
 
   createEmployee() {

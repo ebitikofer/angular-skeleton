@@ -1,13 +1,22 @@
 .example-viewport {
   height: 250px;
-  width: 25%;
+  width: 95%;
   border: 1px solid azure;
 }
 
 .list {
-  height: 80px;
+  height: 25px;
+}
+
+h5 {
+  margin: 0px;
 }
 
 .container {
   justify-content: center
+}
+
+input {
+  /* bottom: 0px; */
+  width: 95%;
 }
