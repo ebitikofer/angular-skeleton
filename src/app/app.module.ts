@@ -6,7 +6,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+
+// Envirment and API vars
+import { environment } from '../environments/environment';
 
 // Feature Modules
 import { ProductModule } from './product/product.module';
@@ -37,6 +44,9 @@ import { ChangeColorDirective } from './change-color.directive';
 // Pipes
 import { FloorPipe } from './floor.pipe';
 import { StringReversalPipe } from './string-reversal.pipe';
+
+// Services
+import { FirebaseAuthService } from './core/auth.service';
 
 @NgModule({
   declarations: [
@@ -72,9 +82,13 @@ import { StringReversalPipe } from './string-reversal.pipe';
     DragDropModule,
     ScrollingModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [FirebaseAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
