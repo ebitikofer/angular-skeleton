@@ -18,10 +18,6 @@ export class NavComponent implements OnInit {
       name: 'Widgets'
     },
     {
-      link: 'component2',
-      name: 'ToDo'
-    },
-    {
       link: 'component3',
       name: 'Theme'
     },

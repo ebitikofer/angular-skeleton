@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -20,7 +21,7 @@ import { trigger, transition, style, animate, state } from '@angular/animations'
 })
 export class SidebarComponent implements OnInit {
 
-  constructor () { }
+  constructor (private router: Router) { }
 
   currentDate = new Date();
   userStatus: string;
@@ -139,6 +140,7 @@ export class SidebarComponent implements OnInit {
     }
     setTimeout(() => {
       this.loggedIn = true;
+      this.router.navigateByUrl('/notes');
     }, 5000);
   }
 

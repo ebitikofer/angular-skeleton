@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'home', component: HomeComponent },
   { path: 'component1/:multiplier/:multiplicand', component: WidgetsComponent },
-  { path: 'component2', component: NotesComponent },
+  { path: 'notes', component: NotesComponent },
   { path: 'component3', component: ThemeSwitchComponent },
   { path: 'component4', component: EmployeeComponent },
   { path: 'signup', component: SignupComponent },
