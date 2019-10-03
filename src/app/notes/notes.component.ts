@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/Observable';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+
+export interface Item { text: any; }
 
 @Component({
   selector: 'app-notes',
@@ -8,7 +12,17 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class NotesComponent implements OnInit {
 
-  constructor () { }
+  private itemsCollection: AngularFirestoreCollection<Item>;
+  private itemsDocument: AngularFirestoreDocument<Item>;
+  private dbFS: AngularFirestore;
+  public profileItems: Observable<any[]>;
+  public chatItems: Observable<any[]>;
+
+  constructor (db: AngularFirestore) { 
+    this.chatItems = db.collection('/notes').valueChanges();
+    this.itemsCollection = db.collection<Item>('notes');
+    this.itemsDocument = db.doc<Item>('notes/0000000000000000');
+  }
 
   todo = ['clean room', 'wash car', 'practice drums', 'code', 'workout'];
 
@@ -29,6 +43,13 @@ export class NotesComponent implements OnInit {
   currentTask = this.todo[0];
 
   ngOnInit() {
+
+  }
+
+  submitTask(event) {
+    this.itemsCollection.add({text: event.target.value});
+    // this.itemsDocument.update({chats: FieldValue.arrayUnion("greater_virginia")})
+    event.target.value = '';
   }
 
   updateCurrentTask(incomingTask) {
