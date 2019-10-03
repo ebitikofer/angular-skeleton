@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 })
 export class NavComponent implements OnInit {
 
-  title = 'Lets Learn Angular';
+  // title = 'Lets Learn Angular';
+  title = 'geeble';
   logo = 'https://cdn.pixabay.com/photo/2017/07/10/19/42/logo-2491236_960_720.png';
 
   routes = [
