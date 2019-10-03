@@ -14,6 +14,10 @@
       <input type="submit" value="Log in" (click)=loginSumission()>
     </div>
 
+    <button class='route-button-active' (click)="signInAnonymously()" >
+      Anonymous
+    </button>
+
     <div class="rectangle" [@lineFill]="emailEntered ? true : false"></div>
     <span class="dot" [@dotFill]="emailEntered ? true : false"></span>
     <div class="short-rectangle"[@lineFill]="passwordEntered ? true : false"></div>

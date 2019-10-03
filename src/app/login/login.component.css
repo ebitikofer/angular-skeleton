@@ -36,3 +36,11 @@ input {
     font-size:  10px;
     display: inline-block;
 }
+
+.route-button-active {
+  width: 150px;
+  border: 1px;
+  border-color: #ad055f;
+  background-color: #e6097e;
+  color: #5E2636;
+}
