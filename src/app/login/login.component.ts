@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   loggedIn = false;
   formHidden = false;
-  
+
   emailEntered = false;
   passwordEntered = false;
   formSubmitted = false;
@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
   }
 
   signInAnonymously() {
-    this.auth.anonymousLogin()
+    this.auth.anonymousLogin();
     this.router.navigateByUrl('');
     this.emailEntered = true;
     setTimeout(() => {
@@ -99,7 +99,7 @@ export class LoginComponent implements OnInit {
   }
 
   emailCheck() {
-    if(this.loginForm.controls.email.errors && this.loginForm.controls.email.errors.required != null) {
+    if (this.loginForm.controls.email.errors && this.loginForm.controls.email.errors.required != null) {
       this.passwordEntered = false;
       setTimeout(() => {
         this.emailEntered = false;
@@ -108,8 +108,8 @@ export class LoginComponent implements OnInit {
       this.emailEntered = true;
     }
     setTimeout(() => {
-      if(this.emailEntered) {
-        if(this.loginForm.controls.password.errors && this.loginForm.controls.password.errors.required != null) {
+      if (this.emailEntered) {
+        if (this.loginForm.controls.password.errors && this.loginForm.controls.password.errors.required != null) {
           this.passwordEntered = false;
         } else {
           this.passwordEntered = true;
@@ -120,8 +120,8 @@ export class LoginComponent implements OnInit {
   }
 
   passwordCheck() {
-    if(this.emailEntered) {
-      if(this.loginForm.controls.password.errors && this.loginForm.controls.password.errors.required != null) {
+    if (this.emailEntered) {
+      if (this.loginForm.controls.password.errors && this.loginForm.controls.password.errors.required != null) {
         this.passwordEntered = false;
       } else {
         this.passwordEntered = true;
@@ -131,7 +131,8 @@ export class LoginComponent implements OnInit {
   }
 
   loginSumission() {
-    if(this.emailEntered && this.passwordEntered) {
+    if (this.emailEntered && this.passwordEntered) {
+      this.auth.emailLogin(this.loginForm.controls.email, this.loginForm.controls.password);
       this.formSubmitted = true;
     }
   }
