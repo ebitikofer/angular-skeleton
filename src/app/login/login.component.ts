@@ -74,9 +74,28 @@ export class LoginComponent implements OnInit {
     }, 500);
   }
 
-  signInAnonymously() {
-    this.auth.anonymousLogin();
+  async loginAnonymously() {
+    console.log('Attempting Auth...');
+    await this.auth.anonymousLogin()
     this.router.navigateByUrl('');
+    this.afterAuthAnimation();
+  }
+
+  async loginSumission() {
+    if (this.emailEntered && this.passwordEntered) {
+      console.log('Attempting Auth...');
+      console.log('Initial: ', this.auth.isAuthenticated);   
+      await this.auth.emailLogin(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
+      console.log('Final: ', this.auth.isAuthenticated);      
+      if (this.auth.isAuthenticated) {
+        this.formSubmitted = true;
+        this.childEvent.emit('authed');
+      }
+      // this.afterAuthAnimation();
+    }
+  }
+
+  afterAuthAnimation() {
     this.emailEntered = true;
     setTimeout(() => {
       this.passwordEntered = true;
@@ -93,10 +112,10 @@ export class LoginComponent implements OnInit {
     this.childEvent.emit('authed');
   }
 
-  private afterSignIn(): void {
-    // Do after login stuff here, such router redirects, toast messages, etc.
-    this.router.navigate(['/notes']);
-  }
+  // private afterSignIn(): void {
+  //   // Do after login stuff here, such router redirects, toast messages, etc.
+  //   this.router.navigate(['/notes']);
+  // }
 
   emailCheck() {
     if (this.loginForm.controls.email.errors && this.loginForm.controls.email.errors.required != null) {
@@ -127,13 +146,6 @@ export class LoginComponent implements OnInit {
         this.passwordEntered = true;
       }
       console.log(this.passwordEntered);
-    }
-  }
-
-  loginSumission() {
-    if (this.emailEntered && this.passwordEntered) {
-      this.auth.emailLogin(this.loginForm.controls.email, this.loginForm.controls.password);
-      this.formSubmitted = true;
     }
   }
 

@@ -4,7 +4,8 @@ import { Observable } from 'rxjs/Observable';
 
 import { EmployeeService } from '../employee.service';
 
-export interface Item { text: any; }
+export interface Item { text: string; uid: string }
+export interface Profile { fname: string, lname: string, uname: string, email: string }
 
 @Component({
   selector: 'app-employee',
@@ -16,7 +17,7 @@ export class EmployeeComponent implements OnInit {
   private itemsCollection: AngularFirestoreCollection<Item>;
   private itemsDocument: AngularFirestoreDocument<Item>;
   private dbFS: AngularFirestore;
-  public profileItems: Observable<any[]>;
+  public userDocument: Observable<any[]>;
   public chatItems: Observable<any[]>;
 
   fname = 'Eric';
@@ -45,8 +46,8 @@ export class EmployeeComponent implements OnInit {
 
   employees = ['Eric', 'Dan', 'Steven', 'Rhys', 'Anthony', 'Chris', 'Chelsea', 'Bailee'];
 
-  constructor (private employee: EmployeeService, db: AngularFirestore) {
-    this.profileItems = db.collection('/profiles').valueChanges();
+  constructor (private employee: EmployeeService, db: AngularFirestore) { 
+    // this.userDocument = db.doc<any[]>('users/' + window.sessionStorage.getItem('session_uid').toString()).valueChanges();
     this.chatItems = db.collection('/chats').valueChanges();
     this.itemsCollection = db.collection<Item>('chats');
     this.itemsDocument = db.doc<Item>('chats/0000000000000000');
@@ -56,42 +57,49 @@ export class EmployeeComponent implements OnInit {
 
   }
 
+  updateProfile() {
+    // this.userDocument = this.dbFS.doc<any[]>('users/' + window.sessionStorage.getItem('session_uid')).valueChanges();
+  }
+
   submitChat(event) {
-    this.itemsCollection.add({text: event.target.value});
+    this.itemsCollection.add({
+      text: event.target.value,
+      uid: window.sessionStorage.getItem('session_uid')
+    });
     // this.itemsDocument.update({chats: FieldValue.arrayUnion("greater_virginia")})
     event.target.value = '';
   }
 
-  createEmployee() {
+  // createEmployee() {
 
-    this.employee.postEmployee(this.newEmployee);
+  //   this.employee.postEmployee(this.newEmployee);
 
-  }
+  // }
 
-  readEmployee(id?: number) {
+  // readEmployee(id?: number) {
 
-    if (id !== undefined) {
-      this.employee.getEmployeeByID(id);
-    } else {
-      this.employee.getEmployees();
-    }
+  //   if (id !== undefined) {
+  //     this.employee.getEmployeeByID(id);
+  //   } else {
+  //     this.employee.getEmployees();
+  //   }
 
-  }
+  // }
 
-  updateEmployee(id: number) {
+  // updateEmployee(id: number) {
 
-    this.employee.putEmployee(id, this.newEmployeeUpdate);
+  //   this.employee.putEmployee(id, this.newEmployeeUpdate);
 
-  }
+  // }
 
-  deleteEmployee(id: number) {
+  // deleteEmployee(id: number) {
 
-    this.employee.deleteEmployee(id);
+  //   this.employee.deleteEmployee(id);
 
-  }
+  // }
 
-  newRandomEmployee() {
+  // newRandomEmployee() {
 
-  }
+  // }
 
 }
