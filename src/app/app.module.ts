@@ -38,12 +38,12 @@ import { ProductAddComponent } from './molecules/product-add/product-add.compone
 import { HomeComponent } from './molecules/home/home.component';
 
 // Directives
-import { ChangeTextDirective } from './change-text.directive';
-import { ChangeColorDirective } from './change-color.directive';
+import { ChangeTextDirective } from './directives/change-text.directive';
+import { ChangeColorDirective } from './directives/change-color.directive';
 
 // Pipes
-import { FloorPipe } from './floor.pipe';
-import { StringReversalPipe } from './string-reversal.pipe';
+import { FloorPipe } from './pipes/floor.pipe';
+import { StringReversalPipe } from './pipes/string-reversal.pipe';
 
 // Services
 import { FirebaseAuthService } from './core/auth.service';
