@@ -1,7 +1,8 @@
 .example-viewport {
   height: 250px;
-  width: 95%;
-  border: 1px solid azure;
+  width: 130px;
+  /* border: 1px solid azure; */
+  background-color: #551e33;
 }
 
 .list {
@@ -12,11 +13,32 @@ h5 {
   margin: 0px;
 }
 
-.container {
+h6 {
+  display: inline;
+  margin: 5px 10px;
+  text-align: center;
+}
+
+.current-user {
+  float: right;
+  text-align: right;
+  background-color: #3F1726;
+  border-radius: 5px;
+}
+
+.other-user {
+  float: left;
+  text-align: left;
+  background-color: #E6097E;
+  border-radius: 5px;
+}
+
+.chat-container {
   justify-content: center
 }
 
 input {
   /* bottom: 0px; */
-  width: 95%;
+  width: 130px;
+  padding: 0px;
 }
