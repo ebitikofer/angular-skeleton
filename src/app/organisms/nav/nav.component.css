@@ -1,15 +1,13 @@
 .nav-div {
-  background-color: #551e33;
-  padding: 10px;
   text-align: center;
 }
 
 .logo-img {
-  max-height: 100px;
-  max-width: 100px;
+  height: 100px;
+  width: 100px;
   display: inline-block;
   float: left;
-  margin: 27.5px;
+  margin: 25px;
 }
 
 .title-text {
@@ -18,7 +16,7 @@
 }
 
 .router-link-text {
-  margin: 16px;
+  margin: 10px;
 }
 
 @media (max-width: 600px) {
@@ -28,7 +26,7 @@
   }
 
   .router-link-text {
-    margin: 16px;
+    margin: 10px;
   }
   
 }

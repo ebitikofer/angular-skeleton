@@ -16,34 +16,34 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 
 // Feature Modules
-import { ProductModule } from './product/product.module';
-import { OrderModule } from './order/order.module';
-import { LoginModule } from './login/login.module';
+import { ProductModule } from './molecules/product/product.module';
+import { OrderModule } from './molecules/order/order.module';
+import { LoginModule } from './molecules/login/login.module';
 
 // Components
 import { AppComponent } from './app.component';
-import { ProdComponent } from './prod/prod.component';
-import { EmployeeComponent } from './employee/employee.component';
-import { UserStatusComponent } from './user-status/user-status.component';
-import { NavComponent } from './nav/nav.component';
-import { WidgetsComponent } from './widgets/widgets.component';
-import { ThemeSwitchComponent } from './theme-switch/theme-switch.component';
-import { NotesComponent } from './notes/notes.component';
-import { NumberIdentifierComponent } from './number-identifier/number-identifier.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
-import { ContentComponent } from './content/content.component';
-import { E404Component } from './e404/e404.component';
-import { SignupComponent } from './signup/signup.component';
-import { ProductAddComponent } from './product-add/product-add.component';
-import { HomeComponent } from './home/home.component';
+import { ProdComponent } from './molecules/prod/prod.component';
+import { EmployeeComponent } from './molecules/employee/employee.component';
+import { UserStatusComponent } from './molecules/user-status/user-status.component';
+import { NavComponent } from './organisms/nav/nav.component';
+import { WidgetsComponent } from './molecules/widgets/widgets.component';
+import { ThemeSwitchComponent } from './molecules/theme-switch/theme-switch.component';
+import { NotesComponent } from './molecules/notes/notes.component';
+import { NumberIdentifierComponent } from './molecules/number-identifier/number-identifier.component';
+import { SidebarComponent } from './organisms/sidebar/sidebar.component';
+import { ContentComponent } from './organisms/content/content.component';
+import { E404Component } from './molecules/e404/e404.component';
+import { SignupComponent } from './molecules/signup/signup.component';
+import { ProductAddComponent } from './molecules/product-add/product-add.component';
+import { HomeComponent } from './molecules/home/home.component';
 
 // Directives
-import { ChangeTextDirective } from './change-text.directive';
-import { ChangeColorDirective } from './change-color.directive';
+import { ChangeTextDirective } from './directives/change-text.directive';
+import { ChangeColorDirective } from './directives/change-color.directive';
 
 // Pipes
-import { FloorPipe } from './floor.pipe';
-import { StringReversalPipe } from './string-reversal.pipe';
+import { FloorPipe } from './pipes/floor.pipe';
+import { StringReversalPipe } from './pipes/string-reversal.pipe';
 
 // Services
 import { FirebaseAuthService } from './core/auth.service';

@@ -26,14 +26,14 @@
     <div style="width: 100px; margin: 0 auto;" *ngFor='let employee of employees' class='pop' cdkDrag>{{employee}}</div>
   </div> -->
 
-  <div class="container">
+  <div class="chat-container">
     <h3>Chat</h3>
     <cdk-virtual-scroll-viewport itemSize='25' class="example-viewport" style="margin: 0 auto;">
       <!-- <div style=" text-align: center;" *cdkVirtualFor="let employee of employees" class="list" cdkDrag> -->
       <div style=" text-align: left;" *cdkVirtualFor="let chatItem of chatItems | async" class="list">
         <!-- <h2>{{employee}}</h2> -->
-        <h5 *ngIf="chatItem.uid == gtYoNJhlPWPmpugclV2xHpYPgwE2" style="text-align: right">{{chatItem.text | json}}</h5>
-        <h5 *ngIf="chatItem.uid != gtYoNJhlPWPmpugclV2xHpYPgwE2" style="text-align: left">{{chatItem.text | json}}</h5>
+        <h6 *ngIf="chatItem.uid == 'gtYoNJhlPWPmpugclV2xHpYPgwE2'" class="current-user">{{chatItem.text | json}}</h6>
+        <h6 *ngIf="chatItem.uid != 'gtYoNJhlPWPmpugclV2xHpYPgwE2'" class="other-user">{{chatItem.text | json}}</h6>
       </div>
     </cdk-virtual-scroll-viewport>
     <input type="text" (keyup.enter)="submitChat($event)">

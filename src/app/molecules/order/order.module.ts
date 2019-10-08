@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { OrderComponent } from './order.component';
 
-import { AuthGuard } from '../auth.guard';
+import { AuthGuard } from '../../guards/auth.guard';
 import { OrderSaveGuard } from './order-save.guard';
 
 @NgModule({

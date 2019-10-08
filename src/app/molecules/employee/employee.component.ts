@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
 
-import { EmployeeService } from '../employee.service';
+import { EmployeeService } from '../../services/employee.service';
 
 export interface Item { text: string; uid: string }
 export interface Profile { fname: string, lname: string, uname: string, email: string }
