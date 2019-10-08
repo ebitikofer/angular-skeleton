@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs/Observable'
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
+import { switchMap, first } from 'rxjs/operators';
 
 export interface Profile { fname: string, lname: string, uname: string, email: string }
 
@@ -11,13 +13,26 @@ export interface Profile { fname: string, lname: string, uname: string, email: s
 export class FirebaseAuthService {
 
   public authState: Observable<firebase.User>;
+  user$: Observable<any>;
   public isAuthenticated: boolean = false;
 
   constructor (public afAuth: AngularFireAuth,
     private db: AngularFirestore,) {
+      this.user$ = this.afAuth.authState.pipe(
+        switchMap(user => {
+          if(user) {
+            return this.db.doc<any>(`users/${user.uid}`).valueChanges();
+          } else {
+            return of(null);
+          }
+        })
+      )
   }
 
   // Returns true if user is logged in
+  getUser() {
+    return this.user$.pipe(first()).toPromise();
+  }
 
   anonymousLogin() {
     this.afAuth.auth.signInAnonymously().catch(function (error) {

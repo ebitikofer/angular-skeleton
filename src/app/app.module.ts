@@ -11,6 +11,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { MatRadioModule } from '@angular/material/radio';
 
 // Envirment and API vars
 import { environment } from '../environments/environment';
@@ -86,7 +87,8 @@ import { FirebaseAuthService } from './core/auth.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    MatRadioModule
   ],
   providers: [FirebaseAuthService],
   bootstrap: [AppComponent]
