@@ -72,7 +72,7 @@ button:active {
   background-color: #64253d;
 }
 
-/* @media (max-width: 600px) {
+@media (max-width: 600px) {
   .container {
     display: grid;
     grid-template-columns: auto;
@@ -85,10 +85,9 @@ button:active {
   }
 
   .sidebar-grid-area {
-    width: 0%;
-    height: 0%;
+    display: none;
   }
-} */
+}
 
 /* width */
 ::-webkit-scrollbar {

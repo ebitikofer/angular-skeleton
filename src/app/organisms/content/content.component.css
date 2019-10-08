@@ -7,10 +7,17 @@ p {
 }
 
 .hamburger-icon {
+  display: none;
   float: left;
   font-size: 30px;
   cursor: pointer;
   margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .hamburger-icon {
+    display: block;
+  }
 }
 
 .sidenav {
