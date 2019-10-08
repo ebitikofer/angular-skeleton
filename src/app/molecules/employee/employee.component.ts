@@ -3,8 +3,11 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable } from 'rxjs/Observable';
 
 import { EmployeeService } from '../../services/employee.service';
+import { ChatService } from '../../services/chat.service';
 
-export interface Item { text: string; uid: string }
+// import * as firebase from 'firebase';
+
+export interface Item { text: string; uid: string; timestamp: any; }
 export interface Profile { fname: string, lname: string, uname: string, email: string }
 
 @Component({
@@ -19,6 +22,8 @@ export class EmployeeComponent implements OnInit {
   private dbFS: AngularFirestore;
   public userDocument: Observable<any[]>;
   public chatItems: Observable<any[]>;
+  public chat$: Observable<any>;
+  private chatId = 0;
 
   fname = 'Eric';
   lname = 'Bitikofer';
@@ -46,7 +51,7 @@ export class EmployeeComponent implements OnInit {
 
   employees = ['Eric', 'Dan', 'Steven', 'Rhys', 'Anthony', 'Chris', 'Chelsea', 'Bailee'];
 
-  constructor (private employee: EmployeeService, db: AngularFirestore) { 
+  constructor (private employee: EmployeeService, db: AngularFirestore, public chat: ChatService) { 
     // this.userDocument = db.doc<any[]>('users/' + window.sessionStorage.getItem('session_uid').toString()).valueChanges();
     this.chatItems = db.collection('/chats').valueChanges();
     this.itemsCollection = db.collection<Item>('chats');
@@ -54,7 +59,9 @@ export class EmployeeComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    // const source = this.chat.get('0');
+    // this.chat$ = this.chat.joinUsers(source);
+    this.chat$ = this.chat.get('0');
   }
 
   updateProfile() {
@@ -62,12 +69,28 @@ export class EmployeeComponent implements OnInit {
   }
 
   submitChat(event) {
-    this.itemsCollection.add({
-      text: event.target.value,
-      uid: window.sessionStorage.getItem('session_uid')
-    });
+
+    // const message = {
+    //   text: event.target.value,
+    //   uid: window.sessionStorage.getItem('session_uid'),
+    //   timestamp: Date.now()
+    // }
+
+    // this.itemsCollection.doc('0').update({
+    //   messages: firebase.firestore.FieldValue.arrayUnion(message)
+    // });
     // this.itemsDocument.update({chats: FieldValue.arrayUnion("greater_virginia")})
+    this.chat.sendMessage(this.chatId, event.target.value);
     event.target.value = '';
+  }
+
+  changeChat(event) {
+    this.chatId = event.value;
+    this.chat$ = this.chat.get(this.chatId);
+  }
+
+  trackByCreated (i, msg) {
+    return msg.createdAt;
   }
 
   // createEmployee() {
