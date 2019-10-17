@@ -8,6 +8,8 @@ import { Observable, combineLatest, of } from 'rxjs';
 
 import { from } from 'rxjs';
 
+export interface Profile { fname: string; lname: string; uname: string; email: string; }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -31,6 +33,19 @@ export class ChatService {
     );
   }
 
+  getUsers() {
+    return this.afs
+    .collection<Profile>('users')
+    .snapshotChanges()
+    .pipe(
+      map(actions => actions.map(a => {
+        const id = a.payload.doc.id;
+        const email = a.payload.doc.data().email;
+        return { id, email };
+      }))
+    );
+  }
+
   async create() {
     // const { uid } = await this.auth.getUser();
     const uid = window.sessionStorage.getItem('session_uid');
@@ -42,12 +57,15 @@ export class ChatService {
       messages: []
     };
 
-    const docRef = await this.afs.collection('chats').add(chat);
+    const docRef = await this.afs
+    .collection<any>('chats')
+    .add(chat);
 
     // return this.router.navigate(['chats', docRef.id]);
   }
 
   async sendMessage(chatId, text) {
+    console.log(chatId);
     // const { uid } = await this.auth.getUser();
     const uid = window.sessionStorage.getItem('session_uid');
 
@@ -58,7 +76,9 @@ export class ChatService {
     };
 
     // if (uid) {
-      const ref = await this.afs.collection('chats').doc(chatId);
+      const ref = await this.afs
+      .collection<any>('chats')
+      .doc(chatId);
       return ref.update({
         messages: firestore.FieldValue.arrayUnion(message)
       });
