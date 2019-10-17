@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject} from 'rxjs';
+import { switchMap } from 'rxjs/operators'
 
 import { EmployeeService } from '../../services/employee.service';
 import { ChatService } from '../../services/chat.service';
@@ -8,7 +9,8 @@ import { ChatService } from '../../services/chat.service';
 // import * as firebase from 'firebase';
 
 export interface Item { text: string; uid: string; timestamp: any; }
-export interface Profile { fname: string, lname: string, uname: string, email: string }
+export interface Profile { fname: string; lname: string; uname: string; email: string; }
+export interface UserChat { chat: string; users: string[]; }
 
 @Component({
   selector: 'app-employee',
@@ -18,12 +20,19 @@ export interface Profile { fname: string, lname: string, uname: string, email: s
 export class EmployeeComponent implements OnInit {
   
   private itemsCollection: AngularFirestoreCollection<Item>;
+  private usersChatsCollection: AngularFirestoreCollection<Item>;
   private itemsDocument: AngularFirestoreDocument<Item>;
   private dbFS: AngularFirestore;
   public userDocument: Observable<any[]>;
+  public usersChats: Observable<any[]>;
   public chatItems: Observable<any[]>;
   public chat$: Observable<any>;
-  private chatId = 0;
+  public users$: Observable<any>;
+
+  currentEmail = '';
+  currentUid = '';
+  chatId = '0';
+  chatFound = false;
 
   fname = 'Eric';
   lname = 'Bitikofer';
@@ -51,9 +60,10 @@ export class EmployeeComponent implements OnInit {
 
   employees = ['Eric', 'Dan', 'Steven', 'Rhys', 'Anthony', 'Chris', 'Chelsea', 'Bailee'];
 
-  constructor (private employee: EmployeeService, db: AngularFirestore, public chat: ChatService) { 
+  constructor (private employee: EmployeeService, private db: AngularFirestore, public chat: ChatService) { 
     // this.userDocument = db.doc<any[]>('users/' + window.sessionStorage.getItem('session_uid').toString()).valueChanges();
     this.chatItems = db.collection('/chats').valueChanges();
+    this.usersChatsCollection = db.collection('/users-chats');
     this.itemsCollection = db.collection<Item>('chats');
     this.itemsDocument = db.doc<Item>('chats/0000000000000000');
   }
@@ -61,6 +71,10 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     // const source = this.chat.get('0');
     // this.chat$ = this.chat.joinUsers(source);
+    this.currentUid = sessionStorage.getItem('session_uid');
+    this.currentEmail = sessionStorage.getItem('session_email');
+    console.log('Loading Users...');
+    this.users$ = this.chat.getUsers();
     this.chat$ = this.chat.get('0');
   }
 
@@ -84,8 +98,47 @@ export class EmployeeComponent implements OnInit {
     event.target.value = '';
   }
 
-  changeChat(event) {
-    this.chatId = event.value;
+  changeChat(secondUser) {
+    this.chatFound = false;
+
+    const currentUser = sessionStorage.getItem('session_email');
+    let queryObservable = new Observable<UserChat[]>();
+
+    queryObservable = this.db.collection<UserChat>('users-chats', ref => ref.where('users', 'array-contains', currentUser)).valueChanges();
+
+    queryObservable.subscribe(queriedItems => {
+      queriedItems.forEach((userChat) => {
+        console.log(userChat);
+        userChat.users.forEach((user) => {
+          console.log(user);
+          if (!this.chatFound && user === secondUser) {
+            this.setChatId(userChat.chat);
+            this.chatFound = true;
+          }
+        })
+      });
+      if (!this.chatFound) {
+        let newChat = this.db.collection('chats').add({
+          messages: []
+        }).then(ref => {
+          console.log('Added chat: ', ref.id);
+          let newChat = this.db.collection('users-chats').add({
+            chat: ref.id,
+            users: [
+              currentUser,
+              secondUser
+            ]
+          }).then(ref => {
+            console.log('Added users-chats table: ', ref.id);
+          });
+        });
+      }
+    });
+
+  }
+
+  setChatId (chatId) {
+    this.chatId = chatId;
     this.chat$ = this.chat.get(this.chatId);
   }
 

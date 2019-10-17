@@ -6,7 +6,7 @@
 }
 
 .list {
-  height: 25px;
+  height: 30px;
 }
 
 h5 {
@@ -38,6 +38,12 @@ h6 {
 }
 
 input {
+  /* bottom: 0px; */
+  width: 130px;
+  padding: 0px;
+}
+
+select {
   /* bottom: 0px; */
   width: 130px;
   padding: 0px;
