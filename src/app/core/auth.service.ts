@@ -1,16 +1,38 @@
 import { Injectable } from '@angular/core';
-import { AngularFireAuth, AuthProviders } from '@angular/fire/auth';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs';
+import { switchMap, first } from 'rxjs/operators';
+
+export interface Profile { fname: string, lname: string, uname: string, email: string }
 
 @Injectable({
   providedIn: 'root'
 })
 export class FirebaseAuthService {
 
-  constructor (public afAuth: AngularFireAuth) {
+  public authState: Observable<firebase.User>;
+  user$: Observable<any>;
+  public isAuthenticated: boolean = false;
 
+  constructor (public afAuth: AngularFireAuth,
+    private db: AngularFirestore,) {
+      this.user$ = this.afAuth.authState.pipe(
+        switchMap(user => {
+          if(user) {
+            return this.db.doc<any>(`users/${user.uid}`).valueChanges();
+          } else {
+            return of(null);
+          }
+        })
+      )
   }
 
   // Returns true if user is logged in
+  getUser() {
+    return this.user$.pipe(first()).toPromise();
+  }
 
   anonymousLogin() {
     this.afAuth.auth.signInAnonymously().catch(function (error) {
@@ -28,14 +50,35 @@ export class FirebaseAuthService {
 
   emailSignUp(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      // .then(() => this.updateUserData())
+      .then(() => this.updateUserData())
       .catch(error => console.log(error));
   }
 
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      //  .then(() => this.updateUserData())
+      .then(() => this.updateUserData())
       .catch(error => console.log(error));
+  }
+
+  private updateUserData(): void {
+
+    this.isAuthenticated = true;
+    console.log('Authenticated!');
+    
+
+    let path = `users/${this.afAuth.auth.currentUser.uid}`;
+    let profile = {
+      fname: null,
+      lname: null,
+      uname: this.afAuth.auth.currentUser.displayName,
+      email: this.afAuth.auth.currentUser.email,
+    }
+  
+    window.sessionStorage.setItem('session_uid', this.afAuth.auth.currentUser.uid);
+
+    this.db.doc<Profile>(path).set(profile)
+    .catch(error => console.log(error));
+  
   }
 
   // firebase.auth().signInAnonymously().catch(function(error) {

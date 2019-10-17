@@ -1,0 +1,35 @@
+<div class='sidebar-div'>
+
+  <!-- <h5 style="margin: 16px;"> -->
+
+  <button *ngFor="let route of routes" class='route-button' routerLink="{{route.link}}" (click)="route.func">{{route.name}}</button><br>
+  <!-- <button class='route-button' routerLink="products">Products</button><br>
+  <button class='route-button' routerLink="order">Order</button><br>
+  <button class='route-button' routerLink="addproduct">Add Product</button><br> -->
+  <button class='route-button-active' *ngIf="!loggedIn" (click)="openLogin()">Login</button><br>
+  <button class='route-button-active' (click)="openSignup()" disabled>Signup</button><br>
+
+  <!-- </h5> -->
+
+  <hr>
+
+  <div [@sectionHeight]="loginHeight ? true : false" [@sectionVisibility]="loginState ? true : false">
+    <app-login [@sectionVisibility]="loginState ? true : false" (childEvent)='catchChildEvent($event)'></app-login>
+  </div>
+
+  <div [@sectionHeight]="signupHeight ? true : false" [@sectionVisibility]="signupState ? true : false">
+    <app-signup [@sectionVisibility]="signupState ? true : false"></app-signup>
+  </div>
+  
+  <div [@sectionHeight]="profileHeight ? true : false" [@sectionVisibility]="profileState ? true : false">
+    <app-employee [@sectionVisibility]="profileState ? true : false"></app-employee>
+  </div>
+
+  <hr>
+
+  <!-- <app-user-status (userStatusEvent)='catchUserStatusEvent($event)'></app-user-status>
+
+  <h5 class="close-text">{{currentDate | date:'d/M/y'}}</h5>
+  <h5 class="close-text">{{currentDate | date:'shortTime'}}</h5> -->
+
+</div>

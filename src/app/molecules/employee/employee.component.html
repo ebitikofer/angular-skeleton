@@ -1,0 +1,50 @@
+<div style="text-align: center;">
+
+  <!-- <h5 style="text-align: left;" *ngIf="itemsDocument">
+    {{ itemsDocument | json }}
+  </h5> -->
+
+  <!-- <h5 style=" margin: 0px;">{{fname | uppercase}}</h5>
+  <h5 style="margin: 0px;">{{lname | lowercase}}</h5>
+  <h5 style="margin: 0px;">{{fname | stringReversal | uppercase}}</h5>
+  <h5 style="margin: 0px;">{{lname | stringReversal | lowercase}}</h5>
+  <h6 style="margin: 0px;">{{ph}}</h6>
+  <h6 style="margin: 0px;">{{bank | currency: 'INR':'symbol'}}</h6>
+  <h6 style="margin: 0px;">{{rating | number: '3.4-4'}}</h6> -->
+  <!-- <h6 style="margin: 0px;">{{info | json}}</h6> -->
+  <!-- <h6 style="margin: 0px;">{{00.54565 | percent}}</h6>
+  <h6 style="margin: 0px;">{{months | slice:2:6}}</h6>
+  <h6 style="margin: 0px;">45.6 floor -> {{45.6 | floor}}</h6> -->
+
+  <!-- <button (click)="readEmployee()">Get</button>
+  <button (click)="readEmployee(60606)">Get</button>
+  <button (click)="createEmployee()">Post</button>
+  <button (click)="updateEmployee(60606)">Put</button>
+  <button (click)="deleteEmployee(60606)">Delete</button> -->
+
+  <!-- <div style="margin: 0 auto;">
+    <div style="width: 100px; margin: 0 auto;" *ngFor='let employee of employees' class='pop' cdkDrag>{{employee}}</div>
+  </div> -->
+
+  <mat-radio-group (change)="changeChat($event)" aria-label="Select an option">
+      <mat-radio-button value="0">1</mat-radio-button>
+      <mat-radio-button value="1">2</mat-radio-button>
+  </mat-radio-group>
+
+  <ng-container *ngIf="chat$ | async as chat">
+    <div class="chat-container">
+      <h3>Chat</h3>
+      <cdk-virtual-scroll-viewport itemSize='25' class="example-viewport" style="margin: 0 auto;">
+        <!-- <div style=" text-align: center;" *cdkVirtualFor="let employee of employees" class="list" cdkDrag> -->
+        <div style=" text-align: left;" *cdkVirtualFor="let chatItem of chat.messages; trackBy: trackByCreated" class="list">
+          <!-- <h2>{{employee}}</h2> -->
+          <h6 *ngIf="chatItem.uid == 'gtYoNJhlPWPmpugclV2xHpYPgwE2'" class="current-user">{{chatItem.text | json}}</h6>
+          <h6 *ngIf="chatItem.uid != 'gtYoNJhlPWPmpugclV2xHpYPgwE2'" class="other-user">{{chatItem.text | json}}</h6>
+        </div>
+      </cdk-virtual-scroll-viewport>
+      <input type="text" (keyup.enter)="submitChat($event)">
+
+    </div>
+  </ng-container>
+
+</div>
