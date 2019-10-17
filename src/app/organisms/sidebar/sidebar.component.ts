@@ -8,13 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./sidebar.component.css'],
   animations: [
     trigger('sectionVisibility', [
-      state('false', style({ opacity: '0' })),
+      state('false', style({ opacity: '1' })),
       state('true', style({ opacity: '1' })),
       transition('true <=> false', animate('.06125s')),
     ]),
     trigger('sectionHeight', [
-      state('false', style({ height: '0px' })),
-      state('true', style({ height: '*' })),
+      state('false', style({ height: '0px', transform: 'translateX(-150%)' })),
+      state('true', style({ height: '*', transform: 'translateX(0%)' })),
       transition('true <=> false', animate('.06125s')),
     ])
   ]
@@ -33,6 +33,10 @@ export class SidebarComponent implements OnInit {
   loginHeight = false;
   signupHeight = false;
   profileHeight = false;
+
+  loginExists = false;
+  signupExists = false;
+  profileExists = false;
 
   authData: string;
   loggedIn = false;
@@ -75,62 +79,85 @@ export class SidebarComponent implements OnInit {
   openLogin() {
     console.log("Open login component");
     setTimeout(() => {
-      this.signupState = false;
-      this.profileState = false;
+      this.closeSignup();
+      this.closeProfile();
+      this.loginExists = true;
       setTimeout(() => {
-        this.signupHeight = false;
-        this.profileHeight = false;
+        this.loginHeight = true;
         setTimeout(() => {
-          this.loginHeight = true;
-          setTimeout(() => {
-            this.loginState = true;
-          }, 500);
+          this.loginState = true;
+        }, 500);
+      }, 500);
+    }, 1000);
+  }
+
+  closeLogin() {
+    console.log("Close login component");
+    setTimeout(() => {
+      this.loginHeight = false;
+      setTimeout(() => {
+        this.loginState = false;
+        setTimeout(() => {
+          this.loginExists = false;
         }, 500);
       }, 500);
     }, 500);
-    
   }
 
   openSignup() {
     console.log("Open signup component");
-
     setTimeout(() => {
-      this.loginState = false;
-      this.profileState = false;
+      this.closeLogin();
+      this.closeProfile();
+      this.signupExists = true;
       setTimeout(() => {
-        this.loginHeight = false;
-        this.profileHeight = false;
+        this.signupHeight = true;
         setTimeout(() => {
-          this.signupHeight = true;
-          setTimeout(() => {
-            this.signupState = true;
-          }, 500);
+          this.signupState = true;
+        }, 500);
+      }, 500);
+    }, 1000);
+  }
+
+  closeSignup() {
+    console.log("Close signup component");
+    setTimeout(() => {
+      this.signupHeight = false;
+      setTimeout(() => {
+        this.signupState = false;
+        setTimeout(() => {
+          this.signupExists = false;
         }, 500);
       }, 500);
     }, 500);
-
   }
 
   openProfile() {
     console.log("Open profile component");
-
-    setTimeout(() => {  
-     setTimeout(() => {
-        this.loginState = false;
-        this.signupState = false;
+    setTimeout(() => {
+      this.closeLogin();
+      this.closeSignup();
+      this.profileExists = true;
+      setTimeout(() => {
+        this.profileHeight = true;
         setTimeout(() => {
-          this.loginHeight = false;
-          this.signupHeight = false;
-          setTimeout(() => {
-            this.profileHeight = true;
-            setTimeout(() => {
-              this.profileState = true;
-            }, 500);
-          }, 500);
+          this.profileState = true;
         }, 500);
       }, 500);
-    }, 3000);
+    }, 1000);
+  }
 
+  closeProfile() {
+    console.log("Close profile component");
+    setTimeout(() => {
+      this.profileHeight = false;
+      setTimeout(() => {
+        this.profileState = false;
+        setTimeout(() => {
+          this.profileExists = false;
+        }, 500);
+      }, 500);
+    }, 500);
   }
 
   catchChildEvent($event) {
