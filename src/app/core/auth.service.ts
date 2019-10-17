@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Observable } from 'rxjs/Observable';
@@ -16,8 +18,11 @@ export class FirebaseAuthService {
   user$: Observable<any>;
   public isAuthenticated: boolean = false;
 
-  constructor (public afAuth: AngularFireAuth,
-    private db: AngularFirestore,) {
+  constructor (
+    public afAuth: AngularFireAuth,
+    private db: AngularFirestore,
+    private router: Router
+    ) {
       this.user$ = this.afAuth.authState.pipe(
         switchMap(user => {
           if(user) {
@@ -48,23 +53,36 @@ export class FirebaseAuthService {
     });
   }
 
-  emailSignUp(email: string, password: string) {
+  emailSignup(email: string, password: string) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
-      .then(() => this.updateUserData())
-      .catch(error => console.log(error));
+      .then(() => {
+        this.updateUserData();
+        console.log('Authenticated');})
+      .catch(error => {
+        console.log('Failed', error)
+      });
   }
 
   emailLogin(email: string, password: string) {
     return this.afAuth.auth.signInWithEmailAndPassword(email, password)
-      .then(() => this.updateUserData())
-      .catch(error => console.log(error));
+      .then(() => {
+        this.updateUserData();
+        console.log('Authenticated');
+      })
+      .catch(error => {
+        console.log('Failed', error)
+      });
+  }
+
+  async signOut() {
+    await this.afAuth.auth.signOut();
+    console.log('Unauthenticated');
+    return this.router.navigate(['/']);
   }
 
   private updateUserData(): void {
 
     this.isAuthenticated = true;
-    console.log('Authenticated!');
-    
 
     let path = `users/${this.afAuth.auth.currentUser.uid}`;
     let profile = {
@@ -73,12 +91,16 @@ export class FirebaseAuthService {
       uname: this.afAuth.auth.currentUser.displayName,
       email: this.afAuth.auth.currentUser.email,
     }
-  
-    window.sessionStorage.setItem('session_uid', this.afAuth.auth.currentUser.uid);
 
-    this.db.doc<Profile>(path).set(profile)
-    .catch(error => console.log(error));
-  
+    window.sessionStorage.setItem('session_uid', this.afAuth.auth.currentUser.uid);
+    window.sessionStorage.setItem('session_email', this.afAuth.auth.currentUser.email);
+
+    this.db.doc<Profile>(path)
+    .set(profile)
+    .catch(error => {
+      console.log('Profile loading errror', error)
+    });
+
   }
 
   // firebase.auth().signInAnonymously().catch(function(error) {
