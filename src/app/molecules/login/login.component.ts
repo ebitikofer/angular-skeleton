@@ -75,7 +75,7 @@ export class LoginComponent implements OnInit {
   }
 
   async loginAnonymously() {
-    console.log('Attempting Auth...');
+    console.log('Attempting Anon Auth...');
     await this.auth.anonymousLogin()
     this.router.navigateByUrl('');
     this.afterAuthAnimation();
@@ -83,10 +83,8 @@ export class LoginComponent implements OnInit {
 
   async loginSumission() {
     if (this.emailEntered && this.passwordEntered) {
-      console.log('Attempting Auth...');
-      console.log('Initial: ', this.auth.isAuthenticated);   
+      console.log('Attempting Email/Password Auth...');
       await this.auth.emailLogin(this.loginForm.controls.email.value, this.loginForm.controls.password.value)
-      console.log('Final: ', this.auth.isAuthenticated);      
       if (this.auth.isAuthenticated) {
         this.formSubmitted = true;
         this.childEvent.emit('authed');
@@ -135,7 +133,6 @@ export class LoginComponent implements OnInit {
         }
       }
     }, 500);
-    console.log(this.emailEntered);
   }
 
   passwordCheck() {
@@ -145,7 +142,6 @@ export class LoginComponent implements OnInit {
       } else {
         this.passwordEntered = true;
       }
-      console.log(this.passwordEntered);
     }
   }
 
