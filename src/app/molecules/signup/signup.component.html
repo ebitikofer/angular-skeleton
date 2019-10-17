@@ -1,6 +1,6 @@
 <div>
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()" [@hideForm]="loggedIn ? true : false" [@shrinkForm]="formHidden ? true : false">
+    <form [formGroup]="signupForm" (ngSubmit)="signup()" [@hideForm]="loggedIn ? true : false" [@shrinkForm]="formHidden ? true : false">
 
         <div [ngClass]="{ 'has-error' : isSubmitted && formControls.email.errors }">
           <input type="email" placeholder="Email" formControlName="email" (blur)="emailCheck()">
@@ -11,11 +11,11 @@
         </div>
 
         <div [ngClass]="{ 'has-error' : isSubmitted && formControls.confirm.errors }">
-            <input type="confirm" placeholder="Confirm" formControlName="confirm" (blur)="confirmCheck()">
+            <input type="password" placeholder="Confirm" formControlName="confirm" (blur)="confirmCheck()">
           </div>
     
         <div>
-          <input type="submit" value="Log in" (click)=loginSumission()>
+          <input type="submit" value="Log in" (click)=signupSumission()>
         </div>
     
         <div class="short-rectangle" [@lineFill]="emailEntered ? true : false"></div>
