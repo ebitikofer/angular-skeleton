@@ -1,0 +1,32 @@
+.nav-div {
+  text-align: center;
+}
+
+.logo-img {
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+  float: left;
+  margin: 25px;
+}
+
+.title-text {
+  display: inline-block;
+  margin: 27.5px 0px;
+}
+
+.router-link-text {
+  margin: 10px;
+}
+
+@media (max-width: 600px) {
+  
+  .title-text {
+    font-size: 15px;
+  }
+
+  .router-link-text {
+    margin: 10px;
+  }
+  
+}

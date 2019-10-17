@@ -1,0 +1,81 @@
+<div>
+
+    <form [formGroup]="signupForm" (ngSubmit)="signup()" [@hideForm]="loggedIn ? true : false" [@shrinkForm]="formHidden ? true : false">
+
+        <div [ngClass]="{ 'has-error' : isSubmitted && formControls.email.errors }">
+          <input type="email" placeholder="Email" formControlName="email" (blur)="emailCheck()">
+        </div>
+    
+        <div [ngClass]="{ 'has-error' : isSubmitted && formControls.password.errors }">
+          <input type="password" placeholder="Password" formControlName="password" (blur)="passwordCheck()">
+        </div>
+
+        <div [ngClass]="{ 'has-error' : isSubmitted && formControls.confirm.errors }">
+            <input type="password" placeholder="Confirm" formControlName="confirm" (blur)="confirmCheck()">
+          </div>
+    
+        <div>
+          <input type="submit" value="Log in" (click)=signupSumission()>
+        </div>
+    
+        <div class="short-rectangle" [@lineFill]="emailEntered ? true : false"></div>
+        <span class="dot" [@dotFill]="emailEntered ? true : false"></span>
+        <div class="short-rectangle"[@lineFill]="passwordEntered ? true : false"></div>
+        <span class="dot" [@dotFill]="passwordEntered ? true : false"></span>
+        <div class="short-rectangle"[@lineFill]="confirmEntered ? true : false"></div>
+        <span class="dot" [@dotFill]="confirmEntered ? true : false"></span>
+        <div class="short-rectangle" [@lineFill]="formSubmitted ? true : false"></div>
+        <span class="dot" [@dotFill]="formSubmitted ? true : false"></span>
+    
+    </form>
+
+  <!-- <form class="form-horizontal" #signupForm="ngForm">
+    <fieldset>
+      <legend>Signup</legend>
+
+      <div class="form-group">
+        <label for="inputEmail">Email</label>
+        <input type="text" required [(ngModel)]="user.email" id="inputEmail" name="email" placeholder="Email">
+      </div>
+
+      <div ngModelGroup="password">
+
+        <div class="form-group">
+          <label for="inputPassword">Password</label>
+          <input type="password" required [(ngModel)]="user.password.pwd" id="inputPassword" name="pwd"
+            placeholder="Password">
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm</label>
+          <input type="password" required [(ngModel)]="user.password.confirmPwd" id="confirmPassword" name="confirmPwd"
+            placeholder="Confirm">
+        </div>
+
+      </div>
+
+      <div class="form-group">
+        <label for="select">Gender</label>
+        <select id="select" required [(ngModel)]="user.gender" name="gender">
+          <option *ngFor="let g of gender" [value]='g'>
+            {{g}}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group checkbox">
+        <label>
+          <input type="checkbox" [(ngModel)]="user.terms" name="terms"> Confirm you've read TOS Agreement
+        </label>
+      </div>
+
+      <div class="form-group">
+        <button type="reset">Cancel</button>
+        <button type="submit" [disabled]="!ngForm.valid">Submit</button>
+        <input type="submit" [disabled]="!ngForm.valid">
+      </div>
+
+    </fieldset>
+  </form> -->
+
+</div>
