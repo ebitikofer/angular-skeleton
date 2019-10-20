@@ -76,7 +76,7 @@ button:active {
   .container {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 150px auto;
+    grid-template-rows: 50px auto;
     grid-template-areas: 
         "nav"
         "content";

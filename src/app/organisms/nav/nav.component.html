@@ -1,5 +1,9 @@
 <div class="nav-div">
 
+  <div class="hamburger-container">
+    <span class="hamburger-icon" (click)="openNav()">&#9776;</span>
+  </div>
+
   <img class="logo-img" [src]="logo" (click)="navigateHome()">
 
   <!-- <h1 style="display: inline-block; margin: 0px;" appChangeText>{{title}}!</h1> -->
@@ -10,5 +14,12 @@
       {{route.name}}
     </a>
   </h5>
+
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+    <a *ngFor="let route of routes" routerLink="{{route.link}}">
+      {{route.name}}
+    </a>
+</div>
 
 </div>

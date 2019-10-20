@@ -36,4 +36,12 @@ export class NavComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
+  openNav() {
+    document.getElementById("mySidenav").style.width = "100%";
+  }
+  
+  closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
 }

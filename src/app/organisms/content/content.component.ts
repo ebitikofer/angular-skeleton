@@ -19,12 +19,4 @@ export class ContentComponent implements OnInit {
     this.childData = $event;
   }
 
-  openNav() {
-    document.getElementById("mySidenav").style.width = "100%";
-  }
-  
-  closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
-  }
-
 }
