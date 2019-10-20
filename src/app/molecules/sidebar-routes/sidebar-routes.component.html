@@ -1,0 +1,8 @@
+<div class='sidebar-routes-div'>
+    <ng-container *ngIf='routes'>
+        <button *ngFor="let route of routes" class='route-button' routerLink="{{route.link}}" (click)="route.func">{{route.name}}</button><br>
+        <!-- <button class='route-button' routerLink="products">Products</button><br>
+        <button class='route-button' routerLink="order">Order</button><br>
+        <button class='route-button' routerLink="addproduct">Add Product</button><br> -->
+    </ng-container>
+</div>

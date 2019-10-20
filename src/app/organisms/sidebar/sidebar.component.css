@@ -2,23 +2,3 @@
   padding: 10px;
   text-align: center;
 }
-
-.route-button {
-  width: 130px;
-  border: 1px;
-  border-color: #ad055f;
-  background-color: #f4cbc7;
-  color: #5E2636;
-}
-
-.route-button-active {
-  width: 130px;
-  border: 1px;
-  border-color: #ad055f;
-  background-color: #e6097e;
-  color: #5E2636;
-}
-
-.close-text {
-  margin: 0px;
-}

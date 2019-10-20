@@ -1,0 +1,41 @@
+<div class='authentication-div'>
+
+    <!-- <h5 style="margin: 16px;"> -->
+    <button class='route-button-active' *ngIf="!loggedIn" (click)="openComponent([signupAnimationSteps, profileAnimationSteps, loginAnimationSteps])">Login</button><br>
+    <button class='route-button-active' (click)="openComponent([loginAnimationSteps, profileAnimationSteps, signupAnimationSteps])">Signup</button><br>
+    <!-- </h5> -->
+
+    <hr>
+
+    <ng-container *ngIf="loginAnimationSteps[2]">
+    <div [@sectionHeight]="loginAnimationSteps[1] ? true : false" [@sectionVisibility]="loginAnimationSteps[0] ? true : false">
+        <app-login [@sectionVisibility]="loginAnimationSteps[0] ? true : false" (childEvent)='catchChildEvent($event)'></app-login>
+    </div>
+    </ng-container>
+
+    <ng-container *ngIf="signupAnimationSteps[2]">
+    <div [@sectionHeight]="signupAnimationSteps[1] ? true : false" [@sectionVisibility]="signupAnimationSteps[0] ? true : false">
+        <app-signup [@sectionVisibility]="signupAnimationSteps[0] ? true : false"></app-signup>
+    </div>
+    </ng-container>
+
+    <ng-container *ngIf="profileAnimationSteps[2]">
+    <div [@sectionHeight]="profileAnimationSteps[1] ? true : false" [@sectionVisibility]="profileAnimationSteps[0] ? true : false">
+        <app-chat [@sectionVisibility]="profileAnimationSteps[0] ? true : false"></app-chat>
+    </div>
+    </ng-container>
+    
+    <!-- <app-shrink-animation>
+        <app-login [@sectionVisibility]="loginAnimationSteps[0] ? true : false" (childEvent)='catchChildEvent($event)'></app-login>
+    </app-shrink-animation>
+    
+    <app-shrink-animation>
+        <app-signup [@sectionVisibility]="signupAnimationSteps[0] ? true : false"></app-signup>
+    </app-shrink-animation>
+    
+    <app-shrink-animation>
+        <app-employee [@sectionVisibility]="profileAnimationSteps[0] ? true : false"></app-employee>
+    </app-shrink-animation> -->
+
+    <hr>
+</div>

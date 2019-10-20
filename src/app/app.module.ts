@@ -37,6 +37,7 @@ import { E404Component } from './molecules/e404/e404.component';
 import { SignupComponent } from './molecules/signup/signup.component';
 import { ProductAddComponent } from './molecules/product-add/product-add.component';
 import { HomeComponent } from './molecules/home/home.component';
+import { AuthenticationComponent } from './organisms/authentication/authentication.component';
 
 // Directives
 import { ChangeTextDirective } from './directives/change-text.directive';
@@ -48,6 +49,10 @@ import { StringReversalPipe } from './pipes/string-reversal.pipe';
 
 // Services
 import { FirebaseAuthService } from './core/auth.service';
+import { DateTimeComponent } from './atoms/date-time/date-time.component';
+import { ShrinkAnimationComponent } from './atoms/shrink-animation/shrink-animation.component';
+import { SidebarRoutesComponent } from './molecules/sidebar-routes/sidebar-routes.component';
+import { ChatComponent } from './organisms/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +74,12 @@ import { FirebaseAuthService } from './core/auth.service';
     E404Component,
     SignupComponent,
     ProductAddComponent,
-    HomeComponent
+    HomeComponent,
+    AuthenticationComponent,
+    DateTimeComponent,
+    ShrinkAnimationComponent,
+    SidebarRoutesComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

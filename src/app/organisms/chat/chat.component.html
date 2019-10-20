@@ -1,0 +1,41 @@
+<div class='chat-div'>
+
+        <!-- <mat-radio-group (change)="changeChat($event)" aria-label="Select an option">
+            <mat-radio-button value="0">1</mat-radio-button>
+            <mat-radio-button value="1">2</mat-radio-button>
+        </mat-radio-group> -->
+      
+        <ng-container *ngIf="users$ | async as users">
+          <div class="users-container">
+
+            <select name="users" (change)="changeChat($event.target.value)">
+              <ng-container *ngFor="let user of users">
+                <ng-container *ngIf="user.email != currentEmail">
+                  <option>
+                    {{user.email}}
+                  </option>
+                </ng-container>
+              </ng-container>
+            </select>
+
+          </div>
+        </ng-container>
+      
+        <ng-container *ngIf="chat$ | async as chat">
+          <div class="chat-container">
+
+            <h3>Chat</h3>
+            <cdk-virtual-scroll-viewport itemSize='25' class="example-viewport" style="margin: 0 auto;">
+              <!-- <div style=" text-align: center;" *cdkVirtualFor="let employee of employees" class="list" cdkDrag> -->
+              <div style=" text-align: left;" *cdkVirtualFor="let chatItem of chat.messages; trackBy: trackByCreated" class="list">
+                <!-- <h2>{{employee}}</h2> -->
+                <h6 *ngIf="chatItem.uid == currentUid" class="current-user">{{chatItem.text | json}}</h6>
+                <h6 *ngIf="chatItem.uid != currentUid" class="other-user">{{chatItem.text | json}}</h6>
+              </div>
+            </cdk-virtual-scroll-viewport>
+            <input type="text" (keyup.enter)="submitChat($event)">
+      
+          </div>
+        </ng-container>
+        
+</div>
