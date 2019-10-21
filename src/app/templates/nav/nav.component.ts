@@ -12,7 +12,7 @@ export class NavComponent implements OnInit {
   title = 'beeblechat';
   logo = 'https://cdn.pixabay.com/photo/2017/07/10/19/42/logo-2491236_960_720.png';
 
-  routes = [
+  routesLinks = [
     {
       link: 'component1/6/9',
       name: 'Widgets'
@@ -27,10 +27,27 @@ export class NavComponent implements OnInit {
     }
   ];
 
+  routes = [
+    {
+      name: 'Products',
+      link: 'products',
+      func: 'nothing()'
+    },
+    {
+      name: 'Order',
+      link: 'order',
+      func: 'nothing()'
+    },
+    {
+      name: 'Add Product',
+      link: 'addproduct',
+      func: 'nothing()'
+    }
+  ];
+
   constructor (private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   navigateHome() {
     this.router.navigateByUrl('');
@@ -38,10 +55,12 @@ export class NavComponent implements OnInit {
 
   openNav() {
     document.getElementById("mySidenav").style.width = "100%";
+    document.getElementById("sideNavPad").style.padding = "0px 10px";
   }
-  
+
   closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.width = "0%";
+    document.getElementById("sideNavPad").style.padding = "0px 0px";
   }
 
 }

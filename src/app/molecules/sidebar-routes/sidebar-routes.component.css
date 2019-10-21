@@ -3,7 +3,8 @@
 }
 
 .route-button {
-    width: 130px;
+    width: 100%;
+    padding: 0px;
     border: 1px;
     border-color: #ad055f;
     background-color: #f4cbc7;

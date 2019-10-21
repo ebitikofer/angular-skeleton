@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./authentication.component.css'],
   animations: [
     trigger('sectionVisibility', [
-      state('false', style({ opacity: '1' })),
+      state('false', style({ opacity: '0' })),
       state('true', style({ opacity: '1' })),
       transition('true <=> false', animate('.06125s')),
     ]),

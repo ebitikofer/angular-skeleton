@@ -10,16 +10,19 @@
   <h1 class="title-text">{{title}}!</h1>
 
   <h5 class="router-link-text">
-    <a *ngFor="let route of routes" routerLink="{{route.link}}">
-      {{route.name}}
+    <a *ngFor="let routeLink of routeLinks" routerLink="{{routeLink.link}}">
+      {{routeLink.name}}
     </a>
   </h5>
 
   <div id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-    <a *ngFor="let route of routes" routerLink="{{route.link}}">
-      {{route.name}}
-    </a>
-</div>
+    <div id="sideNavPad"> 
+      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+      <a *ngFor="let routeLink of routeLinks" routerLink="{{routeLink.link}}">
+        {{routeLink.name}}
+      </a>
+      <app-sidebar-routes [routes]="routes"></app-sidebar-routes>
+    </div>
+  </div>
 
 </div>
