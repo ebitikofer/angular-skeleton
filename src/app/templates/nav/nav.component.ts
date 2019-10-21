@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 export class NavComponent implements OnInit {
 
   // title = 'Lets Learn Angular';
-  title = 'beeblechat';
+  title = 'beeblehub';
   logo = 'https://cdn.pixabay.com/photo/2017/07/10/19/42/logo-2491236_960_720.png';
 
   navOpen = false;
