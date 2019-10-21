@@ -1,18 +1,22 @@
 <div class='authentication-div'>
 
-    <ng-container *ngIf="!loginAnimationSteps[2]">
-            <div [@sectionHeight]="!loginAnimationSteps[1] ? true : false" [@sectionVisibility]="!loginAnimationSteps[0] ? true : false">
-            <button class='route-button-active' (click)="openComponent([signupAnimationSteps, profileAnimationSteps, loginAnimationSteps])">Login</button><br>
+    <ng-container *ngIf="!profileAnimationSteps[2]">
+        <div [@sectionHeight]="!profileAnimationSteps[1] ? true : false" [@sectionVisibility]="!profileAnimationSteps[0] ? true : false">
+            <ng-container *ngIf="!loginAnimationSteps[2]">
+                <div [@sectionHeight]="!loginAnimationSteps[1] ? true : false" [@sectionVisibility]="!loginAnimationSteps[0] ? true : false">
+                    <button class='route-button-active' (click)="openComponent([signupAnimationSteps, profileAnimationSteps, loginAnimationSteps])">Login</button><br>
+                </div>
+            </ng-container>
+
+            <ng-container *ngIf="!signupAnimationSteps[2]">
+                <div [@sectionHeight]="!signupAnimationSteps[1] ? true : false" [@sectionVisibility]="!signupAnimationSteps[0] ? true : false">
+                    <button class='route-button-active' (click)="openComponent([loginAnimationSteps, profileAnimationSteps, signupAnimationSteps])">Signup</button><br>
+                </div>
+            </ng-container>
         </div>
     </ng-container>
 
-    <ng-container *ngIf="!signupAnimationSteps[2]">
-        <div [@sectionHeight]="!signupAnimationSteps[1] ? true : false" [@sectionVisibility]="!signupAnimationSteps[0] ? true : false">
-            <button class='route-button-active' (click)="openComponent([loginAnimationSteps, profileAnimationSteps, signupAnimationSteps])">Signup</button><br>
-        </div>
-    </ng-container>
-
-    <hr>
+    <!-- <hr> -->
 
     <ng-container *ngIf="loginAnimationSteps[2]">
         <div [@sectionHeight]="loginAnimationSteps[1] ? true : false" [@sectionVisibility]="loginAnimationSteps[0] ? true : false">

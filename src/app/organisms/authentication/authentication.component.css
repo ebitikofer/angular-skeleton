@@ -12,5 +12,6 @@ h5 {
   border: 1px;
   border-color: #ad055f;
   background-color: #e6097e;
-  color: #5E2636;
+  /* color: #5E2636; */
+  color: azure;
 }

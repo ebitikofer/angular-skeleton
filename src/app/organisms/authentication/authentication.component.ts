@@ -62,9 +62,9 @@ export class AuthenticationComponent implements OnInit {
     console.log('Close component');
 
     setTimeout(() => {
-      componentStepFlags[1] = false;
+      componentStepFlags[0] = false;
       setTimeout(() => {
-        componentStepFlags[0] = false;
+        componentStepFlags[1] = false;
         setTimeout(() => {
           componentStepFlags[2] = false;
         }, commonStepTime);
