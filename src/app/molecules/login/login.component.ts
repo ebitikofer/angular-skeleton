@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
     }
     console.log('Valid');
     this.authService.login(this.loginForm.value);
-    this.router.navigateByUrl('admin');
+    // this.router.navigateByUrl('admin');
     setTimeout(() => {
       this.loggedIn = true;
       setTimeout(() => {

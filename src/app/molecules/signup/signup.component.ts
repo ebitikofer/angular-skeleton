@@ -80,7 +80,7 @@ export class SignupComponent implements OnInit {
     }
     console.log('Valid');
     this.authService.login(this.signupForm.value);
-    this.router.navigateByUrl('admin');
+    // this.router.navigateByUrl('admin');
     setTimeout(() => {
       this.loggedIn = true;
       setTimeout(() => {
