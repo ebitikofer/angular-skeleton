@@ -1,0 +1,16 @@
+.sidebar-div {
+  padding: 10px;
+  text-align: center;
+}
+
+.media-switch {
+  display: block;
+}
+
+@media (max-width: 600px) {
+
+  .media-switch {
+    display: none;
+  }
+
+}

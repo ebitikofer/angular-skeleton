@@ -21,18 +21,20 @@ import { ProductModule } from './molecules/product/product.module';
 import { OrderModule } from './molecules/order/order.module';
 import { LoginModule } from './molecules/login/login.module';
 
+// Template Components
+import { NavComponent } from './templates/nav/nav.component';
+import { SidebarComponent } from './templates/sidebar/sidebar.component';
+import { ContentComponent } from './templates/content/content.component';
+
 // Components
 import { AppComponent } from './app.component';
 import { ProdComponent } from './molecules/prod/prod.component';
 import { EmployeeComponent } from './molecules/employee/employee.component';
 import { UserStatusComponent } from './molecules/user-status/user-status.component';
-import { NavComponent } from './organisms/nav/nav.component';
 import { WidgetsComponent } from './molecules/widgets/widgets.component';
 import { ThemeSwitchComponent } from './molecules/theme-switch/theme-switch.component';
 import { NotesComponent } from './molecules/notes/notes.component';
 import { NumberIdentifierComponent } from './molecules/number-identifier/number-identifier.component';
-import { SidebarComponent } from './organisms/sidebar/sidebar.component';
-import { ContentComponent } from './organisms/content/content.component';
 import { E404Component } from './molecules/e404/e404.component';
 import { SignupComponent } from './molecules/signup/signup.component';
 import { ProductAddComponent } from './molecules/product-add/product-add.component';

@@ -11,12 +11,14 @@
     </div>
 
     <div>
-      <input type="submit" value="Log in" (click)=loginSumission()>
+      <input type="submit" value="Login" (click)=loginSumission()>
     </div>
 
-    <button class='route-button-active' (click)="loginAnonymously()" >
+    <button class='route-button-active' (click)="loginAnonymously()">
       Anonymous
     </button>
+
+    <br/>
 
     <div class="rectangle" [@lineFill]="emailEntered ? true : false"></div>
     <span class="dot" [@dotFill]="emailEntered ? true : false"></span>

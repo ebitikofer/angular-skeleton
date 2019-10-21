@@ -11,12 +11,14 @@
         </div>
 
         <div [ngClass]="{ 'has-error' : isSubmitted && formControls.confirm.errors }">
-            <input type="password" placeholder="Confirm" formControlName="confirm" (blur)="confirmCheck()">
-          </div>
+          <input type="password" placeholder="Confirm" formControlName="confirm" (blur)="confirmCheck()">
+        </div>
     
         <div>
-          <input type="submit" value="Log in" (click)=signupSumission()>
+          <input type="submit" value="Signup" (click)=signupSumission()>
         </div>
+
+        <!-- <br/> -->
     
         <div class="short-rectangle" [@lineFill]="emailEntered ? true : false"></div>
         <span class="dot" [@dotFill]="emailEntered ? true : false"></span>
