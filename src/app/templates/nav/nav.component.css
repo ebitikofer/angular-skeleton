@@ -18,6 +18,8 @@
 }
 
 .hamburger-icon {
+  height: 75px;
+  width: 75px;
   display: none;
   font-size: 50px;
   cursor: pointer;
@@ -32,46 +34,49 @@
   margin: 10px;
 }
 
+.side-bar-mobile-padding {
+  padding: 10px;
+}
+
 .sidenav {
-  height: 100%;
+  height: calc(100vh - 75px);
   width: 0%;
-  position: fixed;
+  position: relative;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #64253d;
   overflow-x: hidden;
+  /* overflow-y: hidden; */
   transition: 0.5s;
-  padding-top: 60px;
-  text-align:center;
+  /* padding-top: 75px; */
+  text-align: center;
 }
 
 .sidenav a {
-  padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: azure;
   display: block;
   transition: 0.3s;
-
+  margin-bottom: 10px;
 }
 
 .sidenav a:hover{
-  color: #f1f1f1;
+  color: azure;
 }
 
-.sidenav .closebtn {
+/* .sidenav .closebtn {
   position: absolute;
-  top: 0;
-  right: 25px;
+  top: 0px;
+  left: 0px;
   font-size: 36px;
-  margin-left: 50px;
-}
+  margin-right: 50px;
+} */
 
 .close-text {
   margin: 0px;
 }
-
 
 @media screen and (max-height: 450px) {
   .sidenav {padding-top: 15px;}
@@ -93,8 +98,10 @@
   }
   
   .title-text {
+    height: 75px;
+    line-height: 75px;
     font-size: 35px;
-    margin: 10px 0px;
+    margin: 0px;
   }
 
   .router-link-text {

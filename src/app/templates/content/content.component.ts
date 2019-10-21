@@ -12,8 +12,7 @@ export class ContentComponent implements OnInit {
   childData: string;
   userStatus: string;
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   catchChildEvent($event) {
     this.childData = $event;

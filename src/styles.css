@@ -12,7 +12,7 @@ body {
 a {
   color: azure;
   text-decoration: none;
-  margin: 0px 20px;
+  /* margin: 0px 20px; */
 }
 
 input {
@@ -90,17 +90,20 @@ button:active {
   
   input {
     font-size: 25px;
-    margin: 5px 0px;
+    margin: 0px;
+    margin-bottom: 10px;
   }
   
   select {
     font-size: 25px;
-    margin: 5px 0px;
+    margin: 0px;
+    margin-bottom: 10px;
   }
   
   button {
     font-size: 25px;
-    margin: 5px 0px;
+    margin: 0px;
+    margin-bottom: 10px;
   }
 
 }

@@ -12,6 +12,8 @@ export class NavComponent implements OnInit {
   title = 'beeblechat';
   logo = 'https://cdn.pixabay.com/photo/2017/07/10/19/42/logo-2491236_960_720.png';
 
+  navOpen = false;
+
   routesLinks = [
     {
       link: 'component1/6/9',
@@ -31,17 +33,17 @@ export class NavComponent implements OnInit {
     {
       name: 'Products',
       link: 'products',
-      func: 'nothing()'
+      func: 'javascript:void(0)'
     },
     {
       name: 'Order',
       link: 'order',
-      func: 'nothing()'
+      func: 'javascript:void(0)'
     },
     {
-      name: 'Add Product',
+      name: 'Add',
       link: 'addproduct',
-      func: 'nothing()'
+      func: 'javascript:void(0)'
     }
   ];
 
@@ -53,14 +55,16 @@ export class NavComponent implements OnInit {
     this.router.navigateByUrl('');
   }
 
-  openNav() {
-    document.getElementById("mySidenav").style.width = "100%";
-    document.getElementById("sideNavPad").style.padding = "0px 10px";
-  }
+  openCloseNav() {
 
-  closeNav() {
-    document.getElementById("mySidenav").style.width = "0%";
-    document.getElementById("sideNavPad").style.padding = "0px 0px";
+    if (!this.navOpen) {
+      document.getElementById("side-bar-mobile").style.width = "100%";
+    } else {
+      document.getElementById("side-bar-mobile").style.width = "0%";
+    }
+
+    this.navOpen = !this.navOpen;
+
   }
 
 }

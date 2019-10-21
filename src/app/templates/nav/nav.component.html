@@ -1,7 +1,7 @@
 <div class="nav-div">
 
   <div class="hamburger-container">
-    <span class="hamburger-icon" (click)="openNav()">&#9776;</span>
+    <span class="hamburger-icon" (click)="openCloseNav()">&#9776;</span>
   </div>
 
   <img class="logo-img" [src]="logo" (click)="navigateHome()">
@@ -10,18 +10,18 @@
   <h1 class="title-text">{{title}}!</h1>
 
   <h5 class="router-link-text">
-    <a *ngFor="let routeLink of routeLinks" routerLink="{{routeLink.link}}">
+    <a *ngFor="let routeLink of routesLinks" routerLink="{{routeLink.link}}">
       {{routeLink.name}}
     </a>
   </h5>
 
-  <div id="mySidenav" class="sidenav">
-    <div id="sideNavPad"> 
-      <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
-      <a *ngFor="let routeLink of routeLinks" routerLink="{{routeLink.link}}">
+  <div id="side-bar-mobile" class="sidenav">
+    <div class="side-bar-mobile-padding">
+      <!-- <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a> -->
+      <app-sidebar-routes [routes]="routes"></app-sidebar-routes>
+      <a *ngFor="let routeLink of routesLinks" routerLink="{{routeLink.link}}">
         {{routeLink.name}}
       </a>
-      <app-sidebar-routes [routes]="routes"></app-sidebar-routes>
     </div>
   </div>
 

@@ -16,17 +16,17 @@ export class SidebarComponent implements OnInit {
     {
       name: 'Products',
       link: 'products',
-      func: 'nothing()'
+      func: 'javascript:void(0)'
     },
     {
       name: 'Order',
       link: 'order',
-      func: 'nothing()'
+      func: 'javascript:void(0)'
     },
     {
       name: 'Add Product',
       link: 'addproduct',
-      func: 'nothing()'
+      func: 'javascript:void(0)'
     }
   ];
 
@@ -37,7 +37,5 @@ export class SidebarComponent implements OnInit {
   //   this.userStatus = $event;
 
   // }
-
-  nothing() { }
 
 }
