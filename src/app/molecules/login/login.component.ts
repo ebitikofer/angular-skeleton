@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../../services/auth.service';
+import { AuthService } from '../../core/old-auth.service';
 import { FirebaseAuthService } from '../../core/auth.service';
 
 @Component({

@@ -3,7 +3,7 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import { Observable, Subject} from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
-import { ChatService } from '../../services/chat.service';
+import { ChatService } from '../../core/chat.service';
 
 export interface Item { text: string; uid: string; timestamp: any; }
 export interface Profile { fname: string; lname: string; uname: string; email: string; }

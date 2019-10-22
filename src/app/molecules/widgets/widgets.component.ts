@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MultiplyService } from '../../services/multiply.service';
+import { MultiplyService } from '../../core/multiply.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

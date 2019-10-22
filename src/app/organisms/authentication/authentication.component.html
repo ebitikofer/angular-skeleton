@@ -32,7 +32,8 @@
 
     <ng-container *ngIf="profileAnimationSteps[2]">
         <div [@sectionHeight]="profileAnimationSteps[1] ? true : false" [@sectionVisibility]="profileAnimationSteps[0] ? true : false">
-            <app-chat [@sectionVisibility]="profileAnimationSteps[0] ? true : false"></app-chat>
+            <button class='route-button-active' (click)="signoutAuth()">Signout</button><br>
+            <!-- <app-chat [@sectionVisibility]="profileAnimationSteps[0] ? true : false"></app-chat> -->
         </div>
     </ng-container>
     
@@ -48,6 +49,6 @@
         <app-employee [@sectionVisibility]="profileAnimationSteps[0] ? true : false"></app-employee>
     </app-shrink-animation> -->
 
-    <hr>
+    <!-- <hr> -->
 
 </div>

@@ -31,20 +31,30 @@ export class NavComponent implements OnInit {
 
   routes = [
     {
-      name: 'Products',
-      link: 'products',
+      name: 'Chat',
+      link: 'chat',
       func: 'javascript:void(0)'
     },
     {
-      name: 'Order',
-      link: 'order',
+      name: 'Notes',
+      link: 'notes',
       func: 'javascript:void(0)'
     },
-    {
-      name: 'Add',
-      link: 'addproduct',
-      func: 'javascript:void(0)'
-    }
+    // {
+    //   name: 'Products',
+    //   link: 'products',
+    //   func: 'javascript:void(0)'
+    // },
+    // {
+    //   name: 'Order',
+    //   link: 'order',
+    //   func: 'javascript:void(0)'
+    // },
+    // {
+    //   name: 'Add',
+    //   link: 'addproduct',
+    //   func: 'javascript:void(0)'
+    // }
   ];
 
   constructor (private router: Router) { }

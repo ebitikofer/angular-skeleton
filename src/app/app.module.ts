@@ -26,8 +26,10 @@ import { NavComponent } from './templates/nav/nav.component';
 import { SidebarComponent } from './templates/sidebar/sidebar.component';
 import { ContentComponent } from './templates/content/content.component';
 
-// Components
-import { AppComponent } from './app.component';
+// Organism Components
+import { AuthenticationComponent } from './organisms/authentication/authentication.component';
+
+// Molecule Components
 import { ProdComponent } from './molecules/prod/prod.component';
 import { EmployeeComponent } from './molecules/employee/employee.component';
 import { UserStatusComponent } from './molecules/user-status/user-status.component';
@@ -38,21 +40,26 @@ import { NumberIdentifierComponent } from './molecules/number-identifier/number-
 import { E404Component } from './molecules/e404/e404.component';
 import { SignupComponent } from './molecules/signup/signup.component';
 import { ProductAddComponent } from './molecules/product-add/product-add.component';
-import { HomeComponent } from './molecules/home/home.component';
-import { AuthenticationComponent } from './organisms/authentication/authentication.component';
+
+// Atom Components
+import { HomeComponent } from './atoms/home/home.component';
+import { SelectListComponent } from './atoms/select-list/select-list.component';
+import { DateTimeComponent } from './atoms/date-time/date-time.component';
+import { ShrinkAnimationComponent } from './atoms/shrink-animation/shrink-animation.component';
+
+// Components
+import { AppComponent } from './app.component';
 
 // Directives
-import { ChangeTextDirective } from './directives/change-text.directive';
-import { ChangeColorDirective } from './directives/change-color.directive';
+import { ChangeTextDirective } from './core/directives/change-text.directive';
+import { ChangeColorDirective } from './core/directives/change-color.directive';
 
 // Pipes
-import { FloorPipe } from './pipes/floor.pipe';
-import { StringReversalPipe } from './pipes/string-reversal.pipe';
+import { FloorPipe } from './core/pipes/floor.pipe';
+import { StringReversalPipe } from './core/pipes/string-reversal.pipe';
 
 // Services
 import { FirebaseAuthService } from './core/auth.service';
-import { DateTimeComponent } from './atoms/date-time/date-time.component';
-import { ShrinkAnimationComponent } from './atoms/shrink-animation/shrink-animation.component';
 import { SidebarRoutesComponent } from './molecules/sidebar-routes/sidebar-routes.component';
 import { ChatComponent } from './organisms/chat/chat.component';
 
@@ -81,7 +88,8 @@ import { ChatComponent } from './organisms/chat/chat.component';
     DateTimeComponent,
     ShrinkAnimationComponent,
     SidebarRoutesComponent,
-    ChatComponent
+    ChatComponent,
+    SelectListComponent
   ],
   imports: [
     BrowserModule,

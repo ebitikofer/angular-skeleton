@@ -52,10 +52,6 @@ export class NotesComponent implements OnInit {
     event.target.value = '';
   }
 
-  updateCurrentTask(incomingTask) {
-    this.currentTask = incomingTask;
-  }
-  
   drop(event: CdkDragDrop<string[]>) {
     if (event.previousContainer === event.container) {
       moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);

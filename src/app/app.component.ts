@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DateTimeService } from './services/date-time.service';
+import { DateTimeService } from './core/date-time.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({

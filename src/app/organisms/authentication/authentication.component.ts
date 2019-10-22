@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { trigger, transition, style, animate, state } from '@angular/animations';
 import { Router } from '@angular/router';
+import { FirebaseAuthService } from '../../core/auth.service';
 
 @Component({
   selector: 'app-authentication',
@@ -21,7 +22,10 @@ import { Router } from '@angular/router';
 })
 export class AuthenticationComponent implements OnInit {
 
-  constructor (private router: Router) { }
+  constructor (
+    private router: Router,
+    private auth: FirebaseAuthService
+    ) { }
 
   currentDate = new Date();
   userStatus: string;
@@ -33,7 +37,11 @@ export class AuthenticationComponent implements OnInit {
   authData: string;
   loggedIn = false;
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (this.auth.getUser()) {
+      this.openComponent([this.loginAnimationSteps, this.signupAnimationSteps, this.profileAnimationSteps]);
+    }
+  }
 
   openComponent(stepFlags) {
 
@@ -83,9 +91,15 @@ export class AuthenticationComponent implements OnInit {
 
     setTimeout(() => {
       this.loggedIn = true;
-      this.router.navigateByUrl('/notes');
+      // this.router.navigateByUrl('/notes');
     }, 5000);
 
+  }
+
+  signoutAuth() {
+    console.log(this.auth.authState);
+    this.auth.signOut();
+    this.openComponent([this.signupAnimationSteps, this.profileAnimationSteps, this.loginAnimationSteps])
   }
 
 }

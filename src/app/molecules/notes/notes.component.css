@@ -1,32 +1,38 @@
-.example-container {
+h2 {
+  margin: 0px;
+  margin-bottom: 10px;
+}
+
+.drag-drop-container {
   width: 400px;
   max-width: 100%;
-  margin: 0 25px 25px 0;
   display: inline-block;
   vertical-align: top;
+  margin: 0px;
+  margin-bottom: 10px;
 }
 
 @media (max-width: 600px) {
   
-  .example-container {
+  .drag-drop-container {
     width: 100%;
     padding: 0px;
   }
   
 }
 
-.example-list {
-  border: solid 1px #ccc;
+.drag-drop-list {
+  border: solid 1px #64253d;
   min-height: 60px;
   background: #64253d;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   overflow: hidden;
   display: block;
 }
 
-.example-box {
+.drag-drop-box {
   padding: 20px 10px;
-  border-bottom: solid 1px #ccc;
+  border-bottom: solid 1px #64253d;
   color: azure;
   display: flex;
   flex-direction: row;
@@ -38,9 +44,9 @@
   font-size: 14px;
 }
 
-.example-handle {
+.drag-drop-handle {
   position: relative;
-  color: #ccc;
+  color: azure;
   cursor: move;
   width: 24px;
   height: 24px;
@@ -62,10 +68,10 @@
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
 
-.example-box:last-child {
+.drag-drop-box:last-child {
   border: none;
 }
 
-.example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
+.drag-drop-list.cdk-drop-list-dragging .drag-drop-box:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
 }
