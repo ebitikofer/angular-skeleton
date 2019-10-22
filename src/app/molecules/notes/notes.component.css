@@ -9,7 +9,8 @@
 @media (max-width: 600px) {
   
   .example-container {
-    width: 150px
+    width: 100%;
+    padding: 0px;
   }
   
 }
@@ -35,6 +36,14 @@
   cursor: move;
   background: #551e33;
   font-size: 14px;
+}
+
+.example-handle {
+  position: relative;
+  color: #ccc;
+  cursor: move;
+  width: 24px;
+  height: 24px;
 }
 
 .cdk-drag-preview {
