@@ -43,6 +43,7 @@ import { ContentComponent } from './templates/content/content.component';
 // Organism Components
 import { AuthenticationComponent } from './organisms/authentication/authentication.component';
 import { ChatComponent } from './organisms/chat/chat.component';
+import { NotesComponent } from './organisms/notes/notes.component';
 
 // Molecule Components // Feature Modules
 import { ProductModule } from './molecules/product/product.module';
@@ -50,23 +51,22 @@ import { OrderModule } from './molecules/order/order.module';
 import { LoginModule } from './molecules/login/login.module';
 import { SignupComponent } from './molecules/signup/signup.component';
 import { SidebarRoutesComponent } from './molecules/sidebar-routes/sidebar-routes.component';
-import { NotesComponent } from './molecules/notes/notes.component';
 import { E404Component } from './molecules/e404/e404.component';
 
 import { EmployeeComponent } from './molecules/employee/employee.component';
-import { WidgetsComponent } from './molecules/widgets/widgets.component';
 import { ThemeSwitchComponent } from './molecules/theme-switch/theme-switch.component';
 
-import { ProdComponent } from './molecules/prod/prod.component';
-import { UserStatusComponent } from './molecules/user-status/user-status.component';
 import { ProductAddComponent } from './molecules/product-add/product-add.component';
-import { NumberIdentifierComponent } from './molecules/number-identifier/number-identifier.component';
 
 // Atom Components
 import { HomeComponent } from './atoms/home/home.component';
 import { SelectListComponent } from './atoms/select-list/select-list.component';
 import { DateTimeComponent } from './atoms/date-time/date-time.component';
 import { ShrinkAnimationComponent } from './atoms/shrink-animation/shrink-animation.component';
+import { ProdComponent } from './atoms/prod/prod.component';
+import { UserStatusComponent } from './atoms/user-status/user-status.component';
+import { NumberIdentifierComponent } from './atoms/number-identifier/number-identifier.component';
+import { WidgetsComponent } from './atoms/widgets/widgets.component';
 
 // Directives
 import { ChangeTextDirective } from './core/directives/change-text.directive';
@@ -95,29 +95,29 @@ import { AuthState } from './store/state/auth.state';
 
     AuthenticationComponent,
     ChatComponent,
+    NotesComponent,
 
     SignupComponent,
     SidebarRoutesComponent,
-    NotesComponent,
     E404Component,
 
     EmployeeComponent,
-    WidgetsComponent,
     ThemeSwitchComponent,
 
-    ProdComponent,
-    UserStatusComponent,
     ProductAddComponent,
-    NumberIdentifierComponent,
 
     HomeComponent,
     SelectListComponent,
     DateTimeComponent,
     ShrinkAnimationComponent,
+    ProdComponent,
+    UserStatusComponent,
+    NumberIdentifierComponent,
+    WidgetsComponent,
 
     ChangeTextDirective,
     ChangeColorDirective,
-    
+
     FloorPipe,
     StringReversalPipe,
   ],

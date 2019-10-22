@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { WidgetsComponent } from './molecules/widgets/widgets.component';
+import { WidgetsComponent } from './atoms/widgets/widgets.component';
 import { EmployeeComponent } from './molecules/employee/employee.component';
 import { ThemeSwitchComponent } from './molecules/theme-switch/theme-switch.component';
-import { NotesComponent } from './molecules/notes/notes.component';
+import { NotesComponent } from './organisms/notes/notes.component';
 import { ChatComponent } from './organisms/chat/chat.component';
 import { E404Component } from './molecules/e404/e404.component';
 import { SignupComponent } from './molecules/signup/signup.component';
