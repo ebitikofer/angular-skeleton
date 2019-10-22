@@ -12,6 +12,11 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { MatRadioModule } from '@angular/material/radio';
+import { NgxsModule, Actions, Store } from '@ngxs/store';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
+
 
 // Envirment and API vars
 import { environment } from '../environments/environment';
@@ -63,6 +68,12 @@ import { FirebaseAuthService } from './core/auth.service';
 import { SidebarRoutesComponent } from './molecules/sidebar-routes/sidebar-routes.component';
 import { ChatComponent } from './organisms/chat/chat.component';
 
+// State
+import { SettingsState } from './store/state/settings.state';
+import { UserState } from './store/state/user.state';
+import { AuthState } from './store/state/auth.state';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -108,7 +119,22 @@ import { ChatComponent } from './organisms/chat/chat.component';
     AngularFirestoreModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    MatRadioModule
+    MatRadioModule,
+    NgxsModule.forRoot([UserState, AuthState, SettingsState], {
+      developmentMode: !environment.production
+    }),
+    NgxsStoragePluginModule.forRoot({
+      storage: 1,
+      key: [
+        'auth',
+        'settings',
+        'users'
+      ]
+    }),
+    NgxsReduxDevtoolsPluginModule.forRoot(),
+    // !environment.production ?
+    NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
+
   ],
   providers: [FirebaseAuthService],
   bootstrap: [AppComponent]
