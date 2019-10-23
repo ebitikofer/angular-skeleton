@@ -92,18 +92,26 @@ button:active {
     font-size: 25px;
     margin: 0px;
     margin-bottom: 10px;
+    height: 64px;
   }
   
   select {
     font-size: 25px;
     margin: 0px;
     margin-bottom: 10px;
+    height: 64px;
   }
   
   button {
     font-size: 25px;
     margin: 0px;
     margin-bottom: 10px;
+    height: 64px;
+  }
+
+  h2 {
+    height: 64px;
+    line-height: 64px;
   }
 
 }

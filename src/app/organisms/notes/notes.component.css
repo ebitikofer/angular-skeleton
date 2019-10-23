@@ -18,6 +18,12 @@ h2 {
     width: 100%;
     padding: 0px;
   }
+
+  h3 {
+    margin: 0px;
+    margin-left: 20px;
+    text-align: left;
+  }
   
 }
 
@@ -31,7 +37,7 @@ h2 {
 }
 
 .drag-drop-box {
-  padding: 20px 10px;
+  padding: 20px;
   border-bottom: solid 1px #64253d;
   color: azure;
   display: flex;
@@ -41,12 +47,12 @@ h2 {
   box-sizing: border-box;
   cursor: move;
   background: #551e33;
-  font-size: 14px;
+  line-height: 14px;
 }
 
 .drag-drop-handle {
   position: relative;
-  color: azure;
+  color: #f0ffff80;
   cursor: move;
   width: 24px;
   height: 24px;
