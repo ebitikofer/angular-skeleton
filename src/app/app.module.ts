@@ -67,6 +67,7 @@ import { ProdComponent } from './atoms/prod/prod.component';
 import { UserStatusComponent } from './atoms/user-status/user-status.component';
 import { NumberIdentifierComponent } from './atoms/number-identifier/number-identifier.component';
 import { WidgetsComponent } from './atoms/widgets/widgets.component';
+import { ParentComponent } from './atoms/parent/parent.component';
 
 // Directives
 import { ChangeTextDirective } from './core/directives/change-text.directive';
@@ -120,6 +121,7 @@ import { AuthState } from './store/state/auth.state';
 
     FloorPipe,
     StringReversalPipe,
+    ParentComponent,
   ],
   imports: [
     FormsModule,
